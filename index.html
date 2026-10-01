@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Profil Kepribadian Keluarga</title>
+<script data-goatcounter="https://albertbas.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body style="margin:0">
 
@@ -482,7 +483,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     <ul><li><b>iPhone:</b> buka link ini di <b>Safari</b> (salin, lalu tempel di kolom alamat): <a href="https://albertpaladin-ship-it.github.io/profil-kepribadian/">albertpaladin-ship-it.github.io/profil-kepribadian</a></li>
     <li><b>Android:</b> buka link di atas dengan <b>Chrome</b>, atau buka file ini dengan Chrome.</li>
     <li><b>Laptop:</b> buka file ini dengan Chrome, Edge, atau Safari.</li></ul>
-    <p class="small muted">Kode status: TANPA-SKRIP · versi 22. Kirim tangkapan layar ini ke pengirim kalau masih bingung.</p>
+    <p class="small muted">Kode status: TANPA-SKRIP · versi 23. Kirim tangkapan layar ini ke pengirim kalau masih bingung.</p>
   </div>
   <div class="note" id="jserr" role="alert" hidden style="position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom, 0px));z-index:50;box-shadow:var(--shadow)"></div>
   <div class="top">
@@ -608,7 +609,8 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
   <footer>
     <p>Lima dimensi: IPIP-BFM-25 Indonesia (Akhtar &amp; Azwar, 2018; soal IPIP domain publik). Soal skenario kerja/rumah/tertekan ditulis ulang dan belum divalidasi. Persentil dibanding 19.718 responden internasional (data terbuka Open Psychometrics, c. 2012); di bawah persentil 30 rendah, di atas 70 tinggi. Subsampel Indonesia hanya 172 orang.</p>
     <p>Tipe empat huruf: Open Extended Jungian Type Scales 1.2 (Eric Jorgenson), CC BY-NC-SA 4.0; terjemahan belum divalidasi; bukan MBTI resmi. Gaya kerja adalah perkiraan dari Ekstraversi dan Keramahan, bukan tes DISC. Kekuatan karakter berasal dari survei VIA (VIA Institute on Character).</p>
-    <p>Versi 22 · 1 Oktober 2026 · <a href="https://albertpaladin-ship-it.github.io/profil-kepribadian/">albertpaladin-ship-it.github.io/profil-kepribadian</a></p>
+    <p id="analitik">Halaman ini menghitung jumlah kunjungan dan pemakaian fitur secara <b>anonim</b> dengan GoatCounter: tanpa cookie, tanpa alamat IP, dan tanpa nama, jawaban, atau kode hasil siapa pun.</p>
+    <p>Versi 23 · 1 Oktober 2026 · <a href="https://albertpaladin-ship-it.github.io/profil-kepribadian/">albertpaladin-ship-it.github.io/profil-kepribadian</a></p>
     <p id="diag" class="diag">Status: skrip belum berjalan.</p>
     <p>Analisa pasangan berpegang pada Malouff dkk. (2010) dan Dyrenforth dkk. (2010). Untuk penggunaan pribadi dan non-komersial. Semua dihitung di perangkat Anda.</p>
   </footer>
@@ -616,7 +618,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
 
 <script>
 (function () {
-  function tampil(msg) { var b = document.getElementById('jserr'); if (!b) return; b.hidden = false; b.textContent = 'Terjadi galat: ' + msg + ' Tolong kirim tangkapan layar ini. (versi 22)'; }
+  function tampil(msg) { var b = document.getElementById('jserr'); if (!b) return; b.hidden = false; b.textContent = 'Terjadi galat: ' + msg + ' Tolong kirim tangkapan layar ini. (versi 23)'; }
   window.addEventListener('error', function (e) { tampil((e && e.message ? e.message : 'tidak diketahui') + (e && e.lineno ? ' [baris ' + e.lineno + ']' : '') + '.'); });
   window.addEventListener('unhandledrejection', function (e) { tampil(String(e && e.reason) + '.'); });
 })();
@@ -1784,7 +1786,10 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
   }
   ['ctx-k', 'ctx-r', 'ctx-t', 'use-oj', 'use-via'].forEach(function (id) { $(id).addEventListener('change', estimasi); });
 
+  // hitungan anonim: hanya NAMA kejadian (mis. "tes-selesai"), tidak pernah nama orang, jawaban, atau kode
+  function hitung(ev) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: ev, title: ev, event: true }); } catch (e) { /* abaikan */ } }
   function startFresh() {
+    hitung('tes-mulai');
     st = { nama: $('nama').value.trim(), ctx: ['k', 'r', 't'].filter(function (c) { return $('ctx-' + c).checked; }), oj: $('use-oj').checked, via: $('use-via').checked, ans: {}, viaSel: [], pos: 0 };
     queue = buildQueue(st); saveDraft(); openRunner();
   }
@@ -1875,7 +1880,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     CTX.forEach(function (c) { if (c === 'u' || st.ctx.indexOf(c) >= 0) bf[c] = S.BF_ITEMS.map(function (_, i) { return st.ans['bf-' + c + '-' + i]; }); });
     var oj = st.oj ? S.OJ_ITEMS.map(function (_, i) { return st.ans['oj-' + i]; }) : null;
     var code = S.encode({ nama: st.nama, tgl: hariIni(), bf: bf, oj: oj, via: st.via ? st.viaSel.slice(0, 5) : [] });
-    store(HASIL_KEY, code); store(DRAFT_KEY, null); store(TANPA_SAYA_KEY, null);
+    store(HASIL_KEY, code); store(DRAFT_KEY, null); store(TANPA_SAYA_KEY, null); hitung('tes-selesai');
     $('runner').hidden = true; $('setup').hidden = false; refreshResume();
     showHasil(code); renderKel(); show('hasil');
   }
@@ -1984,6 +1989,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     if (dk) dk.addEventListener('click', function () {
       if (!window.Deck) { alert('Mode presentasi belum termuat. Muat ulang halaman.'); return; }
       var own = box.id === 'hasil';
+      hitung(own ? 'presentasi-saya' : 'presentasi-orang-lain');
       window.Deck.mount(code, { remind: own, waText: own ? pesanCadangan : null, onClose: function () { try { dk.focus(); } catch (e) { /* abaikan */ } } });
     });
     var seg = box.querySelector('.aseg');
@@ -1997,7 +2003,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     $('cadwa').addEventListener('click', function (e) {
       var txt = pesanCadangan();
       if (txt.length > 6000) { e.preventDefault(); salinTeks(txt, function (okc) { cinfo.textContent = okc ? 'Cadangan terlalu panjang untuk WhatsApp, jadi disalin. Tempel ke chat WhatsApp Anda sendiri.' : 'Cadangan terlalu panjang untuk WhatsApp. Pakai Unduh file.'; }); return; }
-      $('cadwa').setAttribute('href', 'https://wa.me/?text=' + encodeURIComponent(txt));
+      $('cadwa').setAttribute('href', 'https://wa.me/?text=' + encodeURIComponent(txt)); hitung('cadangan-whatsapp');
       cinfo.textContent = 'WhatsApp dibuka. Pilih chat dengan diri sendiri, lalu kirim.';
     });
     if ($('cadfile')) $('cadfile').addEventListener('click', function () {
@@ -2156,6 +2162,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     if (!raw) { if (!quiet) { $('err3').hidden = false; $('err3').textContent = 'Tempel kode hasil teman dulu. Kode selalu diawali "PK1."'; } return; }
     try { if (!m) throw new Error('Kode tidak dikenali. Kode hasil selalu diawali "PK1."'); pr = S.profil(S.decode(m[0])); }
     catch (e) { if (!quiet) { $('err3').hidden = false; $('err3').textContent = e.message; } return; }
+    if (cekKodeAktif !== m[0]) hitung('cek-teman');
     cekKodeAktif = m[0]; $('err3').hidden = true; simpanRiwayat(m[0]); renderRiwayat(); $('riwayatinfo').textContent = '';
     $('cekisi').innerHTML = renderProfile(pr, m[0], 'other'); wireProfile($('cekisi'), pr, m[0]);
     var sudah = m[0] === load(HASIL_KEY) || daftarKode().indexOf(m[0]) >= 0;
@@ -2194,7 +2201,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     try { var rd = new FileReader(); rd.onload = function () { input.value = ''; cb(String(rd.result || '')); }; rd.onerror = function () { cb(''); }; rd.readAsText(fl); } catch (e) { cb(''); }
   }
   function prosesMuat(raw) {
-    var e4 = $('err4'), r = pulihkan(raw);
+    var e4 = $('err4'), r = pulihkan(raw); if (r.ok) hitung('hasil-dipulihkan');
     if (!r.ok) { e4.hidden = false; e4.textContent = r.msg; return; }
     e4.hidden = true; $('kodesaya').value = '';
     showHasil(load(HASIL_KEY)); renderKel(); renderRiwayat(); refreshResume(); toTop();
@@ -2210,7 +2217,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     var inFrame = false, canStore = false; try { inFrame = window.self !== window.top; } catch (e) { inFrame = true; }
     try { localStorage.setItem('pk-cek', '1'); localStorage.removeItem('pk-cek'); canStore = true; } catch (e) { /* abaikan */ }
     var se = document.scrollingElement || document.documentElement;
-    $('diag').textContent = 'Status: skrip aktif ✓ · bingkai: ' + (inFrame ? 'ya' : 'tidak') + ' · simpan: ' + (canStore ? 'bisa' : 'tidak') + ' · layar ' + window.innerWidth + '×' + window.innerHeight + ' · gulir: ' + (se.scrollHeight > window.innerHeight + 2 ? 'halaman' : 'wadah luar') + ' · v22';
+    $('diag').textContent = 'Status: skrip aktif ✓ · bingkai: ' + (inFrame ? 'ya' : 'tidak') + ' · simpan: ' + (canStore ? 'bisa' : 'tidak') + ' · layar ' + window.innerWidth + '×' + window.innerHeight + ' · gulir: ' + (se.scrollHeight > window.innerHeight + 2 ? 'halaman' : 'wadah luar') + ' · v23';
   })();
   var saved = load(HASIL_KEY);
   if (saved && !showHasil(saved)) store(HASIL_KEY, null);
