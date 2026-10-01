@@ -466,6 +466,18 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
 .filebtn input { position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
 .pulih { border-top: 1px solid var(--line); padding-top: 10px; }
 .pulih summary { cursor: pointer; font-weight: 700; }
+.sambut summary { cursor: pointer; font-weight: 700; font-size: 16px; list-style: none; display: flex; gap: 10px; align-items: flex-start; }
+.sambut summary > span { flex: 1; min-width: 0; }
+.sambut summary::-webkit-details-marker { display: none; }
+.sambut summary::after { content: '▾'; flex: none; color: var(--muted); }
+.sambut:not([open]) summary::after { content: '▸'; }
+.sambut[open] summary { margin-bottom: 4px; }
+.sambut ul.aman { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 10px; }
+.sambut ul.aman li { padding-left: 30px; position: relative; line-height: 1.5; }
+.sambut ul.aman li > i { position: absolute; left: 0; top: 0; font-style: normal; }
+.sambut .hapuswarn { background: var(--sun-soft); border-radius: 10px; padding: 10px 12px; }
+.hint { margin-top: 6px; }
+.btn.danger { background: #C0392B; color: #fff; border: 1px solid #C0392B; }
 .pulih[open] { display: grid; gap: 8px; }
 .herotgl { display: block; font-size: 12.5px; color: rgba(255,255,255,.82); margin-top: -6px; }
 .herotgl .tgl.lama { color: #FFE08A; font-weight: 700; }
@@ -483,7 +495,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     <ul><li><b>iPhone:</b> buka link ini di <b>Safari</b> (salin, lalu tempel di kolom alamat): <a href="https://albertpaladin-ship-it.github.io/profil-kepribadian/">albertpaladin-ship-it.github.io/profil-kepribadian</a></li>
     <li><b>Android:</b> buka link di atas dengan <b>Chrome</b>, atau buka file ini dengan Chrome.</li>
     <li><b>Laptop:</b> buka file ini dengan Chrome, Edge, atau Safari.</li></ul>
-    <p class="small muted">Kode status: TANPA-SKRIP · versi 23. Kirim tangkapan layar ini ke pengirim kalau masih bingung.</p>
+    <p class="small muted">Kode status: TANPA-SKRIP · versi 24. Kirim tangkapan layar ini ke pengirim kalau masih bingung.</p>
   </div>
   <div class="note" id="jserr" role="alert" hidden style="position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom, 0px));z-index:50;box-shadow:var(--shadow)"></div>
   <div class="top">
@@ -505,14 +517,29 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
         <p>Kuesioner refleksi diri: lima dimensi kepribadian, sisi diri di tiap situasi, tipe empat huruf, gaya kerja, dan kekuatan karakter. Bukan psikotes dan bukan diagnosis.</p>
         <div class="facts"><span id="estimasi">± 6 menit</span><span>Dihitung di perangkat Anda</span><span>Tanpa akun</span></div>
       </div>
+      <details class="card sambut" id="sambut" open>
+        <summary><span>🔒 Sebelum mulai: aman dan pribadi</span></summary>
+        <p>Halaman ini dibuat secara pribadi untuk <b>keluarga dan teman dekat</b>. Tujuannya hanya satu: membantu Anda <b>lebih memahami diri sendiri</b> dan orang-orang terdekat. Tidak dijual, bukan riset, dan tidak mengumpulkan data pribadi siapa pun.</p>
+        <ul class="aman">
+          <li><i>🚫</i><b>Tidak pernah meminta</b> kata sandi, kode OTP, nomor HP, email, alamat, KTP, atau nomor rekening. Tidak ada login dan tidak ada pembayaran. Kalau ada yang meminta hal-hal itu atas nama halaman ini, itu <b>bukan</b> dari halaman ini. Abaikan.</li>
+          <li><i>🎭</i><b>Nama boleh samaran.</b> Pakai nama panggilan, inisial, atau alias apa saja. Nama hanya dipakai sebagai judul hasil Anda.</li>
+          <li><i>📱</i><b>Jawaban tersimpan di perangkat Anda sendiri</b>, di browser ini. Jawaban tidak dikirim ke server mana pun, jadi pembuat halaman ini pun tidak bisa melihatnya.</li>
+          <li><i>🤝</i><b>Anda yang memutuskan untuk berbagi.</b> Hasil baru keluar dari perangkat ini kalau Anda sendiri menyalin atau mengirim kodenya, misalnya ke WhatsApp teman. Kode itu memuat nama/alias dan jawaban Anda, jadi kirim hanya ke orang yang Anda percaya.</li>
+          <li><i>🗑️</i><b>Bisa dihapus kapan saja</b> dengan tombol di bawah ini.</li>
+        </ul>
+        <p class="small muted">Supaya jujur sepenuhnya: huruf tampilan dimuat dari Google Fonts, seperti di kebanyakan situs<span data-gc>, dan jumlah kunjungan dihitung secara anonim (GoatCounter) tanpa nama, jawaban, atau alamat IP</span>. Ini alat refleksi diri, bukan psikotes atau diagnosis, untuk usia 18 tahun ke atas. Kode halaman ini terbuka untuk diperiksa siapa saja: <a href="https://github.com/albertpaladin-ship-it/profil-kepribadian" target="_blank" rel="noopener">lihat di GitHub</a>.</p>
+        <p class="small hapuswarn" id="hapuswarn" hidden>Semua hasil, catatan presentasi, dan daftar teman di perangkat ini akan dihapus dan <b>tidak bisa dikembalikan</b>. Kalau masih perlu, simpan cadangan dulu di tab Hasil. Ketuk tombol merah sekali lagi untuk menghapus.</p>
+        <div class="row"><button class="btn" id="sambutok" type="button">Mengerti, mulai</button><button class="btn ghost" id="hapussemua" type="button">Hapus semua data di perangkat ini</button></div>
+      </details>
       <div class="card" id="resumecard" hidden>
         <h3>Lanjutkan yang tadi?</h3>
         <p class="muted" id="resumetxt"></p>
         <div class="row"><button class="btn" id="lanjut" type="button">Lanjutkan</button><button class="btn ghost" id="baru" type="button">Mulai baru</button></div>
       </div>
       <div class="card">
-        <label class="lbl" for="nama">Nama panggilan</label>
-        <input type="text" id="nama" maxlength="40" placeholder="mis. Ayah, Dina" autocomplete="off">
+        <label class="lbl" for="nama">Nama panggilan atau samaran</label>
+        <input type="text" id="nama" maxlength="40" placeholder="mis. Ayah, Dina, atau inisial D" autocomplete="off" aria-describedby="namahint">
+        <p class="small muted hint" id="namahint">Tidak perlu nama asli. Nama ini hanya muncul di hasil Anda dan di perangkat orang yang Anda kirimi kode.</p>
       </div>
       <div class="card">
         <span class="lbl">Situasi yang ingin dilihat</span>
@@ -610,7 +637,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     <p>Lima dimensi: IPIP-BFM-25 Indonesia (Akhtar &amp; Azwar, 2018; soal IPIP domain publik). Soal skenario kerja/rumah/tertekan ditulis ulang dan belum divalidasi. Persentil dibanding 19.718 responden internasional (data terbuka Open Psychometrics, c. 2012); di bawah persentil 30 rendah, di atas 70 tinggi. Subsampel Indonesia hanya 172 orang.</p>
     <p>Tipe empat huruf: Open Extended Jungian Type Scales 1.2 (Eric Jorgenson), CC BY-NC-SA 4.0; terjemahan belum divalidasi; bukan MBTI resmi. Gaya kerja adalah perkiraan dari Ekstraversi dan Keramahan, bukan tes DISC. Kekuatan karakter berasal dari survei VIA (VIA Institute on Character).</p>
     <p id="analitik">Halaman ini menghitung jumlah kunjungan dan pemakaian fitur secara <b>anonim</b> dengan GoatCounter: tanpa cookie, tanpa alamat IP, dan tanpa nama, jawaban, atau kode hasil siapa pun.</p>
-    <p>Versi 23 · 1 Oktober 2026 · <a href="https://albertpaladin-ship-it.github.io/profil-kepribadian/">albertpaladin-ship-it.github.io/profil-kepribadian</a></p>
+    <p>Versi 24 · 1 Oktober 2026 · <a href="https://albertpaladin-ship-it.github.io/profil-kepribadian/">albertpaladin-ship-it.github.io/profil-kepribadian</a></p>
     <p id="diag" class="diag">Status: skrip belum berjalan.</p>
     <p>Analisa pasangan berpegang pada Malouff dkk. (2010) dan Dyrenforth dkk. (2010). Untuk penggunaan pribadi dan non-komersial. Semua dihitung di perangkat Anda.</p>
   </footer>
@@ -618,7 +645,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
 
 <script>
 (function () {
-  function tampil(msg) { var b = document.getElementById('jserr'); if (!b) return; b.hidden = false; b.textContent = 'Terjadi galat: ' + msg + ' Tolong kirim tangkapan layar ini. (versi 23)'; }
+  function tampil(msg) { var b = document.getElementById('jserr'); if (!b) return; b.hidden = false; b.textContent = 'Terjadi galat: ' + msg + ' Tolong kirim tangkapan layar ini. (versi 24)'; }
   window.addEventListener('error', function (e) { tampil((e && e.message ? e.message : 'tidak diketahui') + (e && e.lineno ? ' [baris ' + e.lineno + ']' : '') + '.'); });
   window.addEventListener('unhandledrejection', function (e) { tampil(String(e && e.reason) + '.'); });
 })();
@@ -2213,11 +2240,23 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
   // ---------------- mulai
   estimasi(); refreshResume(); initTgl();
   $('jsfail').hidden = true;
+  // kartu "Sebelum mulai": terbuka di kunjungan pertama, diciutkan setelah "Mengerti"
+  (function () {
+    var sb = $('sambut'), hb = $('hapussemua'), siap = false;
+    if (load('pk-sambut')) sb.open = false;
+    $('sambutok').addEventListener('click', function () { store('pk-sambut', 1); sb.open = false; $('hapuswarn').hidden = true; siap = false; hb.textContent = 'Hapus semua data di perangkat ini'; hb.className = 'btn ghost'; toTop($('nama')); try { $('nama').focus({ preventScroll: true }); } catch (e) {} });
+    // konfirmasi dua ketukan (tanpa confirm(): pop-up sering diblokir di penampil dalam aplikasi)
+    hb.addEventListener('click', function () {
+      if (!siap) { siap = true; $('hapuswarn').hidden = false; hb.textContent = 'Ya, hapus sekarang'; hb.className = 'btn danger'; return; }
+      try { Object.keys(localStorage).forEach(function (k) { if (k.indexOf('pk-') === 0) localStorage.removeItem(k); }); } catch (e) {}
+      location.reload();
+    });
+  })();
   (function () { // baris status untuk tangkapan layar saat ada masalah di perangkat tertentu
     var inFrame = false, canStore = false; try { inFrame = window.self !== window.top; } catch (e) { inFrame = true; }
     try { localStorage.setItem('pk-cek', '1'); localStorage.removeItem('pk-cek'); canStore = true; } catch (e) { /* abaikan */ }
     var se = document.scrollingElement || document.documentElement;
-    $('diag').textContent = 'Status: skrip aktif ✓ · bingkai: ' + (inFrame ? 'ya' : 'tidak') + ' · simpan: ' + (canStore ? 'bisa' : 'tidak') + ' · layar ' + window.innerWidth + '×' + window.innerHeight + ' · gulir: ' + (se.scrollHeight > window.innerHeight + 2 ? 'halaman' : 'wadah luar') + ' · v23';
+    $('diag').textContent = 'Status: skrip aktif ✓ · bingkai: ' + (inFrame ? 'ya' : 'tidak') + ' · simpan: ' + (canStore ? 'bisa' : 'tidak') + ' · layar ' + window.innerWidth + '×' + window.innerHeight + ' · gulir: ' + (se.scrollHeight > window.innerHeight + 2 ? 'halaman' : 'wadah luar') + ' · v24';
   })();
   var saved = load(HASIL_KEY);
   if (saved && !showHasil(saved)) store(HASIL_KEY, null);
