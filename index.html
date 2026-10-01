@@ -479,10 +479,10 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     <h2>⚠️ Tes tidak bisa berjalan di tampilan ini</h2>
     <p>Penampil yang sedang dipakai hanya <b>menampilkan</b> halaman, tanpa menjalankan tombolnya. Ini biasanya terjadi di pratinjau file (misalnya membuka file dari WhatsApp di iPhone) atau di penampil di dalam aplikasi tertentu.</p>
     <p><b>Cara membuka:</b></p>
-    <ul><li><b>iPhone:</b> minta <b>link</b> tes (bukan file) dari pengirim, salin, lalu tempel di kolom alamat <b>Safari</b>.</li>
-    <li><b>Android:</b> buka file ini dengan <b>Chrome</b>.</li>
+    <ul><li><b>iPhone:</b> buka link ini di <b>Safari</b> (salin, lalu tempel di kolom alamat): <a href="https://albertpaladin-ship-it.github.io/profil-kepribadian/">albertpaladin-ship-it.github.io/profil-kepribadian</a></li>
+    <li><b>Android:</b> buka link di atas dengan <b>Chrome</b>, atau buka file ini dengan Chrome.</li>
     <li><b>Laptop:</b> buka file ini dengan Chrome, Edge, atau Safari.</li></ul>
-    <p class="small muted">Kode status: TANPA-SKRIP · versi 21. Kirim tangkapan layar ini ke pengirim kalau masih bingung.</p>
+    <p class="small muted">Kode status: TANPA-SKRIP · versi 22. Kirim tangkapan layar ini ke pengirim kalau masih bingung.</p>
   </div>
   <div class="note" id="jserr" role="alert" hidden style="position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom, 0px));z-index:50;box-shadow:var(--shadow)"></div>
   <div class="top">
@@ -608,7 +608,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
   <footer>
     <p>Lima dimensi: IPIP-BFM-25 Indonesia (Akhtar &amp; Azwar, 2018; soal IPIP domain publik). Soal skenario kerja/rumah/tertekan ditulis ulang dan belum divalidasi. Persentil dibanding 19.718 responden internasional (data terbuka Open Psychometrics, c. 2012); di bawah persentil 30 rendah, di atas 70 tinggi. Subsampel Indonesia hanya 172 orang.</p>
     <p>Tipe empat huruf: Open Extended Jungian Type Scales 1.2 (Eric Jorgenson), CC BY-NC-SA 4.0; terjemahan belum divalidasi; bukan MBTI resmi. Gaya kerja adalah perkiraan dari Ekstraversi dan Keramahan, bukan tes DISC. Kekuatan karakter berasal dari survei VIA (VIA Institute on Character).</p>
-    <p>Versi 21 · 1 Oktober 2026.</p>
+    <p>Versi 22 · 1 Oktober 2026 · <a href="https://albertpaladin-ship-it.github.io/profil-kepribadian/">albertpaladin-ship-it.github.io/profil-kepribadian</a></p>
     <p id="diag" class="diag">Status: skrip belum berjalan.</p>
     <p>Analisa pasangan berpegang pada Malouff dkk. (2010) dan Dyrenforth dkk. (2010). Untuk penggunaan pribadi dan non-komersial. Semua dihitung di perangkat Anda.</p>
   </footer>
@@ -616,7 +616,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
 
 <script>
 (function () {
-  function tampil(msg) { var b = document.getElementById('jserr'); if (!b) return; b.hidden = false; b.textContent = 'Terjadi galat: ' + msg + ' Tolong kirim tangkapan layar ini. (versi 21)'; }
+  function tampil(msg) { var b = document.getElementById('jserr'); if (!b) return; b.hidden = false; b.textContent = 'Terjadi galat: ' + msg + ' Tolong kirim tangkapan layar ini. (versi 22)'; }
   window.addEventListener('error', function (e) { tampil((e && e.message ? e.message : 'tidak diketahui') + (e && e.lineno ? ' [baris ' + e.lineno + ']' : '') + '.'); });
   window.addEventListener('unhandledrejection', function (e) { tampil(String(e && e.reason) + '.'); });
 })();
@@ -1704,7 +1704,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
   function riwayatCek() { var a = load(RIWAYAT_KEY); return Array.isArray(a) ? a.filter(function (x) { return x && typeof x.c === 'string'; }) : []; }
 
   // ---------------- cadangan (PKB1.)
-  var LINK_TES = ''; // diisi dengan link web tes (mis. GitHub Pages) setelah tersedia
+  var LINK_TES = 'https://albertpaladin-ship-it.github.io/profil-kepribadian/'; // link web resmi tes (GitHub Pages)
   function diArtifactClaude() { return /(^|\.)claude(usercontent)?\.(ai|com)$/.test(location.hostname); } // penampil artifact tidak mengizinkan unduhan
   function diBukaSebagaiFile() { return !/^https?:$/.test(location.protocol); }
   function b64e(s) { return btoa(unescape(encodeURIComponent(s))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); }
@@ -2210,7 +2210,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     var inFrame = false, canStore = false; try { inFrame = window.self !== window.top; } catch (e) { inFrame = true; }
     try { localStorage.setItem('pk-cek', '1'); localStorage.removeItem('pk-cek'); canStore = true; } catch (e) { /* abaikan */ }
     var se = document.scrollingElement || document.documentElement;
-    $('diag').textContent = 'Status: skrip aktif ✓ · bingkai: ' + (inFrame ? 'ya' : 'tidak') + ' · simpan: ' + (canStore ? 'bisa' : 'tidak') + ' · layar ' + window.innerWidth + '×' + window.innerHeight + ' · gulir: ' + (se.scrollHeight > window.innerHeight + 2 ? 'halaman' : 'wadah luar') + ' · v21';
+    $('diag').textContent = 'Status: skrip aktif ✓ · bingkai: ' + (inFrame ? 'ya' : 'tidak') + ' · simpan: ' + (canStore ? 'bisa' : 'tidak') + ' · layar ' + window.innerWidth + '×' + window.innerHeight + ' · gulir: ' + (se.scrollHeight > window.innerHeight + 2 ? 'halaman' : 'wadah luar') + ' · v22';
   })();
   var saved = load(HASIL_KEY);
   if (saved && !showHasil(saved)) store(HASIL_KEY, null);
