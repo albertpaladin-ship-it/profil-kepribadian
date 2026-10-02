@@ -191,6 +191,20 @@ td.num { font-variant-numeric: tabular-nums; font-family: var(--f-mono); font-si
 select { font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; width: 100%; }
 .pitem { display: grid; gap: 4px; padding: 12px 0; border-top: 1px solid var(--line); }
 .pitem:first-child { border-top: 0; }
+.psec { margin: 14px 0 4px; font-size: 15px; }
+.bawa { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 8px; }
+.bawa .bw { border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; display: grid; gap: 10px; min-width: 0; }
+.bawa .bw h4 { margin: 0; font-size: 15px; }
+.bawa .bp { display: grid; gap: 4px; }
+.bawa .bp b { font-size: 13px; }
+.bukti { font-size: 13px; color: var(--muted); font-style: italic; }
+.stchip { display: inline-block; border-radius: 99px; padding: 2px 9px; font-size: 12px; font-weight: 700; background: var(--surface-2); color: var(--muted); }
+.stchip.jelas { background: var(--sun-soft); color: var(--ink); }
+.stchip.mungkin { background: var(--accent-soft); color: var(--ink); }
+.refl { background: var(--surface-2); border-radius: 10px; padding: 8px 10px; font-size: 14px; }
+.tanya { margin: 6px 0 0; padding-left: 20px; display: grid; gap: 8px; }
+.app { overflow-wrap: anywhere; word-break: break-word; }
+.app select { max-width: 100%; min-width: 0; }
 .err { color: var(--warn); font-size: 14px; font-weight: 600; }
 .ok { color: var(--accent); font-size: 14px; font-weight: 600; }
 .empty { text-align: center; justify-items: center; padding: 28px 18px; }
@@ -203,6 +217,7 @@ footer { margin-top: 28px; font-size: 12px; color: var(--muted); display: grid; 
 .deckcta { background: linear-gradient(135deg, #1D1747, #3B2C8F); color: #fff; border: 0; }
 .deckcta h2 { color: #fff; } .deckcta p { color: #E6E2FF; }
 .deckcta .btn { background: #FFD23F; color: #1D1747; }
+.duocta { margin: 4px 0 10px; }
 #deckov{--ink:#1D1747;--cream:#FFF4DF;--paper:#FFFFFF;--muted:#5E5A7A;--yel:#FFD23F;--red:#E5484D;--grn:#11B89A;--blu:#3E7BFA;
 --px:"Pixelify Sans","Courier New",monospace;--tx:"Plus Jakarta Sans","Segoe UI",system-ui,sans-serif}
 #deckov *{box-sizing:border-box}
@@ -409,6 +424,32 @@ footer { margin-top: 28px; font-size: 12px; color: var(--muted); display: grid; 
 #deckov .meters p{font-size:14px}
 #deckov .credits{display:flex;flex-direction:column;gap:8px;font-size:13px}
 #deckov .credits p{line-height:1.45}
+#deckov .duo{display:flex;flex-direction:column;gap:4px}
+#deckov .duoh{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+#deckov .duoh b{font:700 14.5px var(--px)}
+#deckov .duoh span:not(.pt){font-size:11px;color:var(--muted)}
+#deckov .duoh .pt{margin-left:auto}
+#deckov .duos{gap:7px}
+#deckov .duos .duo+.duo{border-top:2px dashed #E7E3F5;padding-top:6px}
+#deckov .duos .stat .sl{display:none}
+#deckov .duos .stat{row-gap:0}
+#deckov .duok{display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--c);border:2px solid var(--ink);margin-right:5px;vertical-align:-1px}
+#deckov .pt.st-jelas{background:#FFC9A8}
+#deckov .pt.st-mungkin{background:#FFF0B3}
+#deckov .pt.st-mirip{background:#E7E3F5}
+#deckov .card.bawa p{margin:4px 0 0}
+#deckov .duo.big .duoh b{font-size:21px}
+#deckov .duo.big{background:var(--paper);border:3px solid var(--ink);border-radius:14px;padding:10px 12px;box-shadow:4px 4px 0 var(--ink)}
+#deckov .duo.big .stat .sl{display:flex}
+#deckov .card .cap{margin-top:6px}
+#deckov .bd{overflow-wrap:anywhere;word-break:break-word}
+#deckov .duo .sl{min-width:0}
+#deckov .duo .sn{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+#deckov .rapat .bd{gap:9px}
+#deckov .rapat .card{font-size:13px;line-height:1.38;padding:9px 12px}
+#deckov .rapat .duo.big{padding:7px 11px}
+#deckov .rapat .duo.big .duoh b{font-size:18px}
+#deckov .rapat .duo.big .sb{height:11px}
 #deckov .num,#deckov .ans,#deckov .evn,#deckov .hd,#deckov .lvbig,#deckov .map li::before,#deckov .qm>span,#deckov .qh span,#deckov .qh small,#deckov .meters b,#deckov .z b,#deckov .steps li::before,#deckov .pips div,#deckov .sv .num,#deckov .colv .num,#deckov .ojv .num,#deckov .hp b .num,#deckov .days label{font-family:var(--tx)!important;font-weight:800!important}
 #deckov .hd{font-size:11px;letter-spacing:.08em}
 #deckov .bub>b{font:700 11px var(--px);letter-spacing:.1em;color:#7A6FD0}
@@ -495,7 +536,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     <ul><li><b>iPhone:</b> buka link ini di <b>Safari</b> (salin, lalu tempel di kolom alamat): <a href="https://albertpaladin-ship-it.github.io/profil-kepribadian/">albertpaladin-ship-it.github.io/profil-kepribadian</a></li>
     <li><b>Android:</b> buka link di atas dengan <b>Chrome</b>, atau buka file ini dengan Chrome.</li>
     <li><b>Laptop:</b> buka file ini dengan Chrome, Edge, atau Safari.</li></ul>
-    <p class="small muted">Kode status: TANPA-SKRIP · versi 24. Kirim tangkapan layar ini ke pengirim kalau masih bingung.</p>
+    <p class="small muted">Kode status: TANPA-SKRIP · versi 25. Kirim tangkapan layar ini ke pengirim kalau masih bingung.</p>
   </div>
   <div class="note" id="jserr" role="alert" hidden style="position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom, 0px));z-index:50;box-shadow:var(--shadow)"></div>
   <div class="top">
@@ -637,15 +678,15 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     <p>Lima dimensi: IPIP-BFM-25 Indonesia (Akhtar &amp; Azwar, 2018; soal IPIP domain publik). Soal skenario kerja/rumah/tertekan ditulis ulang dan belum divalidasi. Persentil dibanding 19.718 responden internasional (data terbuka Open Psychometrics, c. 2012); di bawah persentil 30 rendah, di atas 70 tinggi. Subsampel Indonesia hanya 172 orang.</p>
     <p>Tipe empat huruf: Open Extended Jungian Type Scales 1.2 (Eric Jorgenson), CC BY-NC-SA 4.0; terjemahan belum divalidasi; bukan MBTI resmi. Gaya kerja adalah perkiraan dari Ekstraversi dan Keramahan, bukan tes DISC. Kekuatan karakter berasal dari survei VIA (VIA Institute on Character).</p>
     <p id="analitik">Halaman ini menghitung jumlah kunjungan dan pemakaian fitur secara <b>anonim</b> dengan GoatCounter: tanpa cookie, tanpa alamat IP, dan tanpa nama, jawaban, atau kode hasil siapa pun.</p>
-    <p>Versi 24 · 1 Oktober 2026 · <a href="https://albertpaladin-ship-it.github.io/profil-kepribadian/">albertpaladin-ship-it.github.io/profil-kepribadian</a></p>
+    <p>Versi 25 · 2 Oktober 2026 · <a href="https://albertpaladin-ship-it.github.io/profil-kepribadian/">albertpaladin-ship-it.github.io/profil-kepribadian</a></p>
     <p id="diag" class="diag">Status: skrip belum berjalan.</p>
-    <p>Analisa pasangan berpegang pada Malouff dkk. (2010) dan Dyrenforth dkk. (2010). Untuk penggunaan pribadi dan non-komersial. Semua dihitung di perangkat Anda.</p>
+    <p>Analisa berdua berpegang pada Dyrenforth dkk. (2010), Malouff dkk. (2010), Körner &amp; Altmann (persahabatan), dan Denissen dkk. (orang tua–remaja). Batas "jelas/mungkin berbeda" dihitung dari perkiraan keandalan kuesioner. Untuk penggunaan pribadi dan non-komersial. Semua dihitung di perangkat Anda.</p>
   </footer>
 </div>
 
 <script>
 (function () {
-  function tampil(msg) { var b = document.getElementById('jserr'); if (!b) return; b.hidden = false; b.textContent = 'Terjadi galat: ' + msg + ' Tolong kirim tangkapan layar ini. (versi 24)'; }
+  function tampil(msg) { var b = document.getElementById('jserr'); if (!b) return; b.hidden = false; b.textContent = 'Terjadi galat: ' + msg + ' Tolong kirim tangkapan layar ini. (versi 25)'; }
   window.addEventListener('error', function (e) { tampil((e && e.message ? e.message : 'tidak diketahui') + (e && e.lineno ? ' [baris ' + e.lineno + ']' : '') + '.'); });
   window.addEventListener('unhandledrejection', function (e) { tampil(String(e && e.reason) + '.'); });
 })();
@@ -1118,7 +1159,141 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
       (p1.oj.type === p2.oj.type ? 'Tipe kalian sama.' : 'Huruf yang berbeda: ' + ['IE', 'SN', 'FT', 'JP'].filter(function (k) { return p1.oj[k].letter !== p2.oj[k].letter; }).map(function (k) { return S.OJ_FORMULA[k].loName + '/' + S.OJ_FORMULA[k].hiName; }).join(', ') + '.')) : null;
     return { rel: r.nama, pembuka: r.pembuka, items: items, tipe: tipe };
   }
-  return { ASPEK: ASPEK, REL: REL, detail: detail, pasangan: pasangan, TEKS: A, PAIR: PAIR, PAIR_REL: PAIR_REL, MIRIP: MIRIP };
+  // ======================================================================================================
+  // Analisa berdua v2 (versi 25). Berpegang pada:
+  //  - Dyrenforth dkk. (2010): sifat masing-masing (actor/partner: keramahan, ketelitian, kestabilan emosi) jauh lebih
+  //    berpengaruh daripada kemiripan (< 0,5% varians) -> bagian "yang dibawa masing-masing" didahulukan.
+  //  - Korner & Altmann (persahabatan): keramahan, ekstraversi, kestabilan emosi; kemiripan tidak berkaitan.
+  //  - Denissen dkk. (orang tua-remaja): keramahan dan ekstraversi berkaitan dengan kehangatan hubungan.
+  //  - Ambang perbedaan berbasis keandalan: SD skor mentah dari norma (skor.js), reliabilitas diasumsikan 0,75
+  //    (IPIP-BFM-25 Indonesia dilaporkan > 0,70 per dimensi). SE selisih = SD * sqrt(2) * sqrt(1 - r).
+  //    "mungkin" = selisih >= 1,28 SE (~80%), "jelas" = >= 1,96 SE (~95%). Dibulatkan ke atas ke poin mentah.
+  // ======================================================================================================
+  var AMBANG = { E: [5, 7], A: [4, 6], C: [4, 6], S: [5, 7], O: [4, 6] };
+  var LBL5 = ['Sangat tidak sesuai', 'Tidak sesuai', 'Netral', 'Sesuai', 'Sangat sesuai'];
+  var TANPA_KUTIP = { 4: 1, 14: 1 }; // soal resmi u4 dan u14 (istilahnya butuh keterangan, lihat GLOSS di deck): tidak dikutip
+  var STATUS = { jelas: 'Jelas berbeda', mungkin: 'Mungkin berbeda', mirip: 'Belum bisa dibedakan' };
+  var BAWA_DIMS = { pasangan: ['A', 'S', 'C'], keluarga: ['A', 'S', 'E'], teman: ['A', 'S', 'E'] };
+  var BAWA = {
+    pasangan: {
+      A: { tinggi: '{N} membawa kehangatan dan kesediaan mengalah. Riset menemukan keramahan seseorang ikut berkaitan dengan puasnya pasangan. Yang perlu dijaga: jangan sampai {N} terus menyesuaikan diri sampai kebutuhannya sendiri tidak pernah tersampaikan.',
+        tengah: '{N} bisa hangat sekaligus tegas. Ini bekal yang baik untuk berkompromi. Yang membantu: menjelaskan alasan saat {N} memilih bertahan pada pendapat.',
+        rendah: '{N} membawa kejujuran yang lugas, sehingga masalah tidak dibiarkan menggantung. Yang perlu dijaga: pasangan bisa merasa kurang diperhatikan bila kritik datang tanpa pengakuan perasaan. Satu kalimat seperti "aku ngerti kamu kesal" sebelum memberi solusi sering sudah cukup.' },
+      S: { tinggi: '{N} membawa ketenangan; saat ada masalah, {N} cenderung tidak ikut panik. Dari lima dimensi, stabilitas emosi termasuk yang paling konsisten berkaitan dengan puasnya hubungan. Yang perlu dijaga: tetap tunjukkan kepedulian, karena tenang bisa disangka cuek.',
+        tengah: '{N} cukup stabil, dengan masa-masa tertentu saat emosi lebih mudah naik, biasanya saat lelah atau banyak beban. Memberi tahu pasangan tanda-tanda itu membantu pasangan tahu kapan harus memberi ruang.',
+        rendah: '{N} membawa kepekaan dan cepat menangkap ada yang tidak beres. Yang perlu dijaga: saat cemas atau tersinggung, emosi bisa memperbesar masalah kecil. Kebiasaan yang membantu: menunda pembahasan sampai sudah tenang, dan mengatakan apa yang dibutuhkan, misalnya "aku cuma butuh didengar".' },
+      C: { tinggi: '{N} membawa keandalan: janji ditepati, urusan bersama beres. Keteraturan seseorang berkaitan dengan puasnya pasangan, walau pengaruhnya kecil. Yang perlu dijaga: standar {N} jangan berubah menjadi tuntutan bagi pasangan.',
+        tengah: '{N} cukup bisa diandalkan tanpa kaku. Yang membantu: menyepakati hal mana yang wajib tepat waktu dan mana yang boleh santai.',
+        rendah: '{N} membawa spontanitas dan keluwesan. Yang perlu dijaga: janji kecil yang terlewat (membalas pesan, datang tepat waktu, membayar tagihan) sering lebih melukai daripada yang disadari. Pengingat bersama di HP sangat membantu.' }
+    },
+    keluarga: {
+      A: { tinggi: '{N} membawa kehangatan ke rumah dan sering menjadi penengah. Dalam riset orang tua dan anak, keramahan berkaitan dengan hubungan yang lebih hangat. Yang perlu dijaga: {N} juga boleh menyampaikan keberatan.',
+        tengah: '{N} bisa mendukung keluarga sambil tetap menjaga batas. Yang membantu: menyampaikan alasan saat menolak, supaya tidak disangka tidak peduli.',
+        rendah: '{N} membawa keterusterangan, sehingga masalah di rumah tidak dipendam. Yang perlu dijaga: nada bicara. Di keluarga, cara menyampaikan sering lebih diingat daripada isinya.' },
+      S: { tinggi: '{N} sering menjadi pegangan saat keluarga menghadapi masalah. Yang perlu dijaga: anggota keluarga yang mudah cemas butuh didengar dulu, bukan langsung ditenangkan.',
+        tengah: '{N} umumnya tenang, tetapi bisa lebih mudah tersulut saat lelah. Keluarga terbantu bila tahu tanda-tandanya.',
+        rendah: '{N} peka terhadap suasana rumah. Yang perlu dijaga: kekhawatiran {N} bisa menular ke seisi rumah. Beri tahu keluarga apa yang menenangkan {N} saat sedang tertekan.' },
+      E: { tinggi: '{N} menghidupkan suasana rumah dan sering menjadi pengajak kegiatan bersama. Dalam satu studi keluarga, orang tua yang lebih ekstrover cenderung punya hubungan lebih hangat dengan anak remajanya. Yang perlu dijaga: anggota yang pendiam tetap kebagian ruang.',
+        tengah: '{N} bisa ikut ramai saat kumpul keluarga dan juga menikmati waktu tenang. Peran ini berguna sebagai jembatan antara yang suka ramai dan yang butuh sepi.',
+        rendah: '{N} menghargai rumah yang tenang. Yang perlu dijaga: menyendiri bisa disangka menjauh. Kalimat seperti "aku lagi isi tenaga dulu ya" mencegah salah paham.' }
+    },
+    teman: {
+      A: { tinggi: '{N} membawa kehangatan dan kepedulian. Dalam studi persahabatan, keramahan seseorang berkaitan dengan puasnya dirinya sendiri dan juga temannya. Yang perlu dijaga: {N} tidak harus selalu mengiyakan ajakan.',
+        tengah: '{N} ramah tanpa mudah dimanfaatkan: enak diajak berteman sekaligus jujur bila ada yang tidak cocok.',
+        rendah: '{N} membawa kejujuran; teman tahu {N} akan bilang apa adanya. Yang perlu dijaga: candaan atau kritik yang terlalu tajam, karena tidak semua teman nyaman dengan gaya blak-blakan.' },
+      S: { tinggi: '{N} enak dijadikan tempat cerita karena tidak mudah ikut panik. Stabilitas emosi berkaitan dengan puasnya persahabatan. Yang perlu dijaga: tetap tanyakan kabar walau teman terlihat baik-baik saja.',
+        tengah: '{N} umumnya stabil dan sesekali juga butuh didengar. Pertemanan berjalan dua arah: {N} boleh bergantian curhat.',
+        rendah: '{N} peka dan cepat merasakan kalau teman sedang ada masalah. Yang perlu dijaga: curhat yang terus-menerus bisa saling memperbesar kecemasan; selingi dengan kegiatan yang menyenangkan.' },
+      E: { tinggi: '{N} sering menjadi penggerak acara dan pengajak bertemu. Ekstraversi berkaitan dengan puasnya persahabatan. Yang perlu dijaga: teman yang pendiam lebih nyaman di acara kecil.',
+        tengah: '{N} bisa menikmati acara ramai maupun obrolan berdua, dan luwes mengikuti suasana teman.',
+        rendah: '{N} lebih nyaman dengan sedikit teman dekat dan obrolan yang dalam. Yang perlu dijaga: jarang mengajak bisa disangka tidak peduli, jadi sesekali {N} yang memulai kontak.' }
+    }
+  };
+  var REFLEKSI = {
+    pasangan: {
+      E: { beda: 'Kapan terakhir {A} ingin pergi atau bertemu orang, sementara {B} ingin di rumah saja? Bagaimana kalian memutuskannya, dan apakah keduanya merasa adil?', sama: 'Kegiatan berdua apa yang paling membuat kalian merasa dekat akhir-akhir ini? Kapan terakhir kalian melakukannya?' },
+      A: { beda: 'Dalam perbedaan pendapat terakhir, siapa yang akhirnya mengalah? Apakah itu memang pilihan, atau sudah jadi kebiasaan?', sama: 'Adakah hal kecil yang selama ini kalian pendam, atau justru sering kalian perdebatkan? Apa satu hal yang ingin kalian bicarakan dengan cara berbeda?' },
+      C: { beda: 'Urusan apa (uang, rumah, jadwal) yang paling sering membuat {A} merasa harus mengingatkan? Bagaimana membaginya supaya {A} tidak jadi "pengawas" dan {B} tidak merasa diatur?', sama: 'Rencana bersama apa yang sedang berjalan baik, dan mana yang sering tertunda? Siapa yang sebaiknya memegangnya?' },
+      S: { beda: 'Saat {B} cemas atau sedih, tanggapan {A} seperti apa yang paling membantu, dan mana yang malah terasa meremehkan?', sama: 'Saat salah satu dari kalian sedang tertekan, apa yang biasanya kalian lakukan? Apakah itu benar-benar membantu?' },
+      O: { beda: 'Hal baru apa yang ingin dicoba {A}, dan kebiasaan apa yang ingin dijaga {B}? Bisakah keduanya masuk dalam rencana bulan depan?', sama: 'Kapan terakhir kalian mencoba sesuatu yang benar-benar baru berdua? Apa yang ingin dicoba berikutnya?' }
+    },
+    keluarga: {
+      E: { beda: 'Saat {B} menyendiri di rumah, bagaimana {A} biasanya menafsirkannya? Sudahkah pernah dibicarakan terus terang?', sama: 'Kegiatan keluarga apa yang paling kalian berdua nikmati? Kapan terakhir dilakukan?' },
+      A: { beda: 'Saat ada ketegangan di rumah, siapa yang biasanya menyesuaikan diri? Apakah {A} pernah merasa terlalu sering mengalah?', sama: 'Adakah hal yang mengganjal di antara kalian tetapi belum pernah dibahas? Kapan waktu yang aman untuk membicarakannya?' },
+      C: { beda: 'Aturan rumah mana yang menurut {A} paling penting, dan mana yang menurut {B} bisa lebih longgar? Bisakah disepakati tiga yang paling penting saja?', sama: 'Urusan rumah apa yang selama ini paling lancar, dan mana yang paling sering tertunda?' },
+      S: { beda: 'Saat {B} khawatir, apa yang biasanya dilakukan {A}? Apa yang sebenarnya dibutuhkan {B} saat itu?', sama: 'Saat ada masalah keluarga, siapa yang biasanya menenangkan? Bisakah peran itu bergantian?' },
+      O: { beda: 'Tradisi keluarga apa yang ingin dijaga {B}, dan kegiatan baru apa yang ingin dicoba {A}?', sama: 'Tradisi atau kegiatan keluarga apa yang paling berarti bagi kalian berdua?' }
+    },
+    teman: {
+      E: { beda: 'Acara seperti apa yang paling nyaman untuk kalian berdua: ramai-ramai atau berdua saja? Sudah pernah saling tanya?', sama: 'Kapan terakhir kalian benar-benar ngobrol, bukan sekadar bertemu? Apa yang membuat obrolan itu berkesan?' },
+      A: { beda: 'Pernahkah ucapan {B} terasa terlalu tajam bagi {A}, atau {A} memendam sesuatu supaya tidak ribut? Bagaimana kalian ingin saling bilang?', sama: 'Adakah hal kecil yang selama ini kalian diamkan, atau justru sering kalian ributkan, dalam pertemanan ini?' },
+      C: { beda: 'Seberapa sering rencana bareng batal atau molor? Siapa yang sebaiknya memegang rencana, dan apa yang bisa saling dimaklumi?', sama: 'Rencana bareng apa yang sudah lama dibicarakan tetapi belum terwujud?' },
+      S: { beda: 'Saat {B} sedang cemas, cara {A} menanggapi seperti apa yang paling membantu?', sama: 'Saat salah satu dari kalian sedang ada masalah, apakah yang lain tahu? Bagaimana cara saling memberi tahu?' },
+      O: { beda: 'Hal baru apa yang ingin {A} ajak coba, dan mana yang menurut {B} masuk akal untuk dicoba bareng?', sama: 'Kegiatan apa yang dulu sering kalian lakukan bersama dan ingin diulang?' }
+    }
+  };
+  var PEMBUKA2 = {
+    pasangan: 'Riset pada puluhan ribu pasangan menemukan bahwa mirip atau tidaknya kepribadian hampir tidak berpengaruh pada puasnya hubungan. Yang lebih berpengaruh adalah apa yang dibawa masing-masing, terutama keramahan, keteraturan, dan stabilitas emosi, walau pengaruhnya pun kecil. Karena itu bagian ini dimulai dari apa yang dibawa masing-masing, baru kemudian perbedaannya.',
+    keluarga: 'Dalam keluarga, yang paling berkaitan dengan hubungan yang hangat adalah sikap masing-masing, misalnya keramahan, bukan mirip atau tidaknya kepribadian. Bagian ini dimulai dari apa yang dibawa masing-masing, lalu perbedaan yang bisa memicu gesekan kecil.',
+    teman: 'Studi persahabatan menemukan bahwa kemiripan kepribadian tidak berkaitan dengan puasnya pertemanan. Yang berkaitan adalah sikap masing-masing, terutama keramahan. Bagian ini dimulai dari apa yang dibawa masing-masing, lalu di mana kalian berbeda.'
+  };
+  var MIRIP2 = 'Selisih kalian {G} poin (skala 5–25), masih dalam batas wajar kesalahan ukur kuesioner pendek ini. Anggap kalian kurang lebih setara di dimensi ini.';
+  var CATATAN2 = 'Batas "jelas" dan "mungkin" dihitung dari perkiraan keandalan kuesioner (5 soal per dimensi). "Belum bisa dibedakan" bukan berarti sama persis. Semua ini kecenderungan dari jawaban sendiri, bukan penilaian tentang siapa yang benar.';
+
+  // satu kali jalan: nama yang kebetulan berisi "{A}" atau "$&" tidak ikut terganti
+  function isi(t, m) { return t.replace(/\{([A-Z])\}/g, function (s, k) { return Object.prototype.hasOwnProperty.call(m, k) ? m[k] : s; }); }
+  function keyed(i, v) { return S.BF_ITEMS[i][2] === 1 ? v : 6 - v; }
+  function soalDim(d) { var a = []; for (var i = 0; i < 25; i++) if (S.BF_ITEMS[i][1] === d && !TANPA_KUTIP[i]) a.push(i); return a; }
+  function kutip(i) { return '“' + S.BF_ITEMS[i][0] + '”'; }
+  // bukti satu orang untuk pita tinggi/rendah: soal yang searah paling kuat (keyed >= 4 untuk tinggi, <= 2 untuk rendah)
+  function buktiSatu(nama, ans, d, pita) {
+    if (pita === 'tengah') return null;
+    var best = null;
+    soalDim(d).forEach(function (i) { var k = keyed(i, ans[i]), ok = pita === 'tinggi' ? k >= 4 : k <= 2, kuat = pita === 'tinggi' ? k : 6 - k; if (ok && (!best || kuat > best.kuat)) best = { i: i, kuat: kuat }; });
+    return best ? 'Dari jawaban ' + nama + ': ' + kutip(best.i) + ' → ' + LBL5[ans[best.i] - 1] + '.' : null;
+  }
+  // bukti perbedaan: soal dengan selisih searah terbesar (minimal 2 tingkat) antara yang tinggi dan yang rendah
+  function buktiBeda(hi, lo, d) {
+    var best = null;
+    soalDim(d).forEach(function (i) { var g = keyed(i, hi.ans[i]) - keyed(i, lo.ans[i]); if (g >= 2 && (!best || g > best.g)) best = { i: i, g: g }; });
+    return best ? 'Contoh dari jawaban: untuk ' + kutip(best.i) + ', ' + hi.nama + ' menjawab ' + LBL5[hi.ans[best.i] - 1].toLowerCase() + ', ' + lo.nama + ' menjawab ' + LBL5[lo.ans[best.i] - 1].toLowerCase() + '.' : null;
+  }
+  // bukti kesamaan: soal yang dijawab sama oleh keduanya dan searah dengan pitanya
+  function buktiSama(a, b, d, pita) {
+    var r = null;
+    soalDim(d).forEach(function (i) { if (r || a.ans[i] !== b.ans[i]) return; var k = keyed(i, a.ans[i]); if (pita === 'tinggi' ? k >= 4 : k <= 2) r = 'Kalian sama-sama menjawab ' + LBL5[a.ans[i] - 1].toLowerCase() + ' untuk ' + kutip(i) + '.'; });
+    return r;
+  }
+  // o1/o2: { p: hasil S.profil, ans: jawaban Umum (25 angka 1..5, dari S.decode(kode).bf.u) }
+  function berdua(o1, o2, rel) {
+    var key = REL[rel] ? rel : 'keluarga', PT = PAIR_REL[key], R = REFLEKSI[key], dims = Object.keys(S.BF_DIMS);
+    var x1 = { nama: o1.p.nama, ans: o1.ans, u: o1.p.bf.u }, x2 = { nama: o2.p.nama, ans: o2.ans, u: o2.p.bf.u };
+    var bawa = [x1, x2].map(function (x) {
+      return { nama: x.nama, poin: BAWA_DIMS[key].map(function (d) {
+        // bukti searah: pita tinggi/rendah tanpa satu pun jawaban yang mendukung (mis. semua Netral) diperlakukan sebagai tengah
+        var pita = x.u[d].pita, bk = buktiSatu(x.nama, x.ans, d, pita); if (pita !== 'tengah' && !bk) pita = 'tengah';
+        return { d: d, dim: S.BF_DIMS[d].nama, pita: pita, teks: isi(BAWA[key][d][pita], { N: x.nama }), bukti: bk };
+      }) };
+    });
+    var items = dims.map(function (d) {
+      var a = x1.u[d], b = x2.u[d], gap = Math.abs(a.raw - b.raw), st = gap >= AMBANG[d][1] ? 'jelas' : gap >= AMBANG[d][0] ? 'mungkin' : 'mirip';
+      var hi = a.raw >= b.raw ? x1 : x2, lo = hi === x1 ? x2 : x1, teks, bukti = null, ref;
+      if (st !== 'mirip') { teks = isi(PT[d].beda, { A: hi.nama, B: lo.nama }); bukti = buktiBeda(hi, lo, d); ref = isi(R[d].beda, { A: hi.nama, B: lo.nama }); }
+      else {
+        ref = R[d].sama;
+        // "sama-sama tinggi/rendah" hanya bila jawaban kedua orang ada yang searah (bukan sekadar efek norma)
+        if (a.pita === b.pita && a.pita !== 'tengah' && buktiSatu('', x1.ans, d, a.pita) && buktiSatu('', x2.ans, d, a.pita)) { teks = PT[d][a.pita]; bukti = buktiSama(x1, x2, d, a.pita); }
+        else teks = MIRIP2.replace('{G}', gap);
+      }
+      return { d: d, dim: S.BF_DIMS[d].nama, status: st, label: STATUS[st], a: { raw: a.raw, persentil: a.persentil }, b: { raw: b.raw, persentil: b.persentil }, gap: gap, teks: teks, bukti: bukti, refleksi: ref };
+    });
+    var urut = { jelas: 0, mungkin: 1, mirip: 2 };
+    items.sort(function (p, q) { return urut[p.status] - urut[q.status] || (q.gap / AMBANG[q.d][0]) - (p.gap / AMBANG[p.d][0]); });
+    var tanya = items.filter(function (x) { return x.status !== 'mirip'; }).concat(items.filter(function (x) { return x.status === 'mirip'; })).slice(0, 3).map(function (x) { return x.refleksi; });
+    return { rel: REL[key].nama, pembuka: PEMBUKA2[key], tipe: pasangan(o1.p, o2.p, key).tipe, bawa: bawa, items: items, tanya: tanya, catatan: CATATAN2 };
+  }
+
+  return { ASPEK: ASPEK, REL: REL, detail: detail, pasangan: pasangan, berdua: berdua, AMBANG: AMBANG, BAWA: BAWA, REFLEKSI: REFLEKSI, TEKS: A, PAIR: PAIR, PAIR_REL: PAIR_REL, MIRIP: MIRIP };
 });
 
 </script>
@@ -1501,6 +1676,119 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     return { nama: NAMA, screens: screens, skills: skills, traps: traps, boss: boss, quizD: quizD, profil: P, dec: D };
   }
 
+  // ======================================================================================================
+  // Deck berdua (versi 25): disusun dari Analisa.berdua (yang dibawa masing-masing, perbedaan berbasis keandalan,
+  // kutipan jawaban, pertanyaan refleksi). o1/o2 = { p: profil, ans: jawaban Umum }. rel = pasangan | keluarga | teman.
+  // ======================================================================================================
+  var DUO_COL = ['#3E7BFA', '#FF6B57'];
+  var DEMO = { E: '🎉', A: '🤗', C: '📋', S: '🧘', O: '💡' };
+  var EDISI = { pasangan: '💞 Edisi Pasangan', keluarga: '🏠 Edisi Keluarga', teman: '🫂 Edisi Teman' };
+  var STCLS = { jelas: 'st-jelas', mungkin: 'st-mungkin', mirip: 'st-mirip' };
+  function buildBerdua(o1, o2, rel, opt) {
+    opt = opt || {};
+    var R = AN.berdua(o1, o2, rel), key = AN.REL[rel] ? rel : 'keluarga', N1 = o1.p.nama, N2 = o2.p.nama, O = [o1, o2];
+    var screens = [], LV = 'MULAI', lvN = 0;
+    function add(body, o) { o = o || {}; screens.push({ body: body, lv: o.lv || LV, cls: o.cls || '', id: o.id || '' }); }
+    function levelIntro(judul, isi, emo) { lvN++; LV = 'LV ' + lvN + ' · ' + judul.toUpperCase(); add('<div class="lvbig">LEVEL ' + lvN + '</div><div class="lvemo">' + emo + '</div><h1 class="lvt">' + judul + '</h1><p class="lvp">' + isi + '</p>', { cls: 'dark lvl' }); }
+    function tag(t) { return '<span class="tag tg-' + t + '">' + { bukti: 'BUKTI', riset: 'RISET', saran: 'SARAN', tafsiran: 'TAFSIRAN' }[t] + '</span>'; }
+    function kiko(txt) { return '<div class="npc">' + OWL + '<div class="bub"><b>KIKO</b><p>' + txt + '</p></div></div>'; }
+    function chip(st, label) { return '<span class="pt ' + STCLS[st] + '" data-st="' + st + '">' + esc(label.toUpperCase()) + '</span>'; }
+    function bar(k, d) { // skor mentah 5..25 -> 20 sel
+      var raw = O[k].p.bf.u[d].raw, cells = ''; for (var i = 0; i < 20; i++) cells += '<i class="' + (i < raw - 5 ? 'on' : '') + '"></i>';
+      return '<div class="stat" data-duo="' + (k + 1) + '.' + d + '"><div class="sl"><span class="sn">' + esc(O[k].p.nama) + '</span></div><div class="sb" style="--c:' + DUO_COL[k] + '">' + cells + '</div><div class="sv"><b class="num">' + raw + '</b><span class="ss">/25</span></div></div>';
+    }
+    function duo(d, it, besar) { return '<div class="duo' + (besar ? ' big' : '') + '"><div class="duoh"><b>' + DEMO[d] + ' ' + GAME[d] + '</b><span>' + S.BF_DIMS[d].nama + '</span>' + (it ? chip(it.status, it.label) : '') + '</div>' + bar(0, d) + bar(1, d) + '</div>'; }
+    function itemOf(d) { for (var i = 0; i < R.items.length; i++) if (R.items[i].d === d) return R.items[i]; return null; }
+    var beda = R.items.filter(function (x) { return x.status !== 'mirip'; }), setara = R.items.filter(function (x) { return x.status === 'mirip'; });
+    var NAMA = N1 + ' & ' + N2, nmFs = Math.max(22, Math.min(54, Math.floor(330 / (Math.max(6, NAMA.length) * 0.68))));
+
+    var plan = [['Tutorial', 'cara membaca hasil berdua'], ['Lembar duo', '5 stat kalian berdampingan'], ['Yang dibawa', 'bekal masing-masing'],
+      ['Beda & setara', beda.length ? beda.length + ' perbedaan yang terukur' : 'di mana kalian setara'], ['Ngobrol berdua', '3 pertanyaan'], ['Misi duo', 'satu kesepakatan, 7 hari']];
+
+    add('<div class="title"><div class="tk">BUKU PANDUAN DUO</div><div class="tn" style="font-size:' + nmFs + 'px">' + esc(NAMA.toUpperCase()) + '</div>' +
+      '<div class="tsub">' + EDISI[key] + ' · 5 stat · 3 obrolan</div><div class="tbig">' + OWL + '</div><div class="press">▶ KETUK UNTUK MULAI</div><p class="tnote">Refleksi bersama, bukan ukuran cocok atau tidak.</p></div>', { cls: 'dark' });
+    add(kiko('Halo ' + esc(N1) + ' dan ' + esc(N2) + '! Aku <b>Kiko</b>. Buku ini disusun dari <b data-x="njaw">50</b> jawaban kalian berdua di bagian Umum.') +
+      kiko('Tujuannya bukan menilai kalian cocok atau tidak, tapi supaya lebih mudah saling memahami. Paling seru dibaca berdua.') +
+      '<div class="card how"><h3>Cara main</h3><div class="howg"><div><span class="key">◀</span>ketuk sisi kiri<br>= kembali</div><div><span class="key">▶</span>ketuk sisi kanan<br>= lanjut</div></div><p class="small">Ada kuis, kolom obrolan, dan misi yang bisa dicentang. Isian tersimpan di perangkat ini saja.</p></div>');
+    add('<h2>Peta dunia</h2><p class="lead">' + plan.length + ' level untuk berdua.</p><ol class="map">' + plan.map(function (x) { return '<li><b>' + x[0] + '</b><span>' + esc(x[1]) + '</span></li>'; }).join('') + '</ol>');
+
+    // Tutorial
+    levelIntro('Tutorial', 'Dua hal penting sebelum membandingkan. Cuma 2 layar.', '🎮');
+    add('<div class="tk2">FAKTA 1</div><h2>Mirip itu tidak penting</h2><div class="card"><p>' + esc(R.pembuka) + '</p></div><p class="cap">' + tag('riset') + ' Dyrenforth dkk. (2010): kemiripan menjelaskan kurang dari 0,5% kepuasan hubungan di 3 negara. Studi persahabatan dan keluarga menemukan pola serupa.</p>');
+    add('<div class="tk2">FAKTA 2</div><h2>Tiga label</h2><p class="lead">Kuesioner pendek punya kesalahan ukur. Selisih kecil bisa cuma kebetulan.</p>' +
+      '<div class="card"><p>' + chip('jelas', 'Jelas berbeda') + ' selisihnya besar, kira-kira 95% yakin memang beda.</p></div>' +
+      '<div class="card"><p>' + chip('mungkin', 'Mungkin berbeda') + ' ada kecenderungan beda, kira-kira 80% yakin.</p></div>' +
+      '<div class="card"><p>' + chip('mirip', 'Belum bisa dibedakan') + ' selisihnya masih dalam batas kesalahan ukur. Bukan berarti sama persis.</p></div>' +
+      '<p class="cap">' + tag('riset') + ' Batas dihitung dari keandalan skala 5 soal per dimensi (perkiraan 0,75).</p>');
+
+    // Lembar duo
+    levelIntro('Lembar duo', 'Lima stat kalian berdampingan. Skor 5–25 dari jawaban sendiri.', '📊');
+    add('<h2>Stat berdua</h2><p class="lead"><span class="duok" style="--c:' + DUO_COL[0] + '"></span>' + esc(N1) + ' &nbsp; <span class="duok" style="--c:' + DUO_COL[1] + '"></span>' + esc(N2) + '</p><div class="sheet sm duos">' +
+      ['E', 'A', 'C', 'S', 'O'].map(function (d) { return duo(d, itemOf(d)); }).join('') + '</div>');
+    if (beda.length) {
+      var top = beda[0];
+      add('<div class="tk2">KUIS CEPAT</div><h2>Tebak dulu!</h2><p class="lead">Di stat mana perbedaan kalian <b>paling jelas</b>?</p><div class="quiz" data-quiz="q1">' +
+        DIMS.map(function (d) { return '<button type="button" data-a="' + d + '"><span>' + DEMO[d] + '</span>' + GAME[d] + '<small>' + S.BF_DIMS[d].nama + '</small></button>'; }).join('') + '</div><p class="cap quizhint">Tebak masing-masing dulu, lalu lanjut untuk lihat jawabannya.</p>');
+      add('<div class="tk2">JAWABAN</div><h2 data-quizans="' + top.d + '">' + DEMO[top.d] + ' ' + GAME[top.d] + '!</h2>' + duo(top.d, top) +
+        '<div class="card"><p>Selisih ' + top.gap + ' poin, sekitar ' + (Math.round(top.gap / AN.AMBANG[top.d][0] * 10) / 10).toString().replace('.', ',') + '× batas kesalahan ukur stat ini. Tiap stat punya batas sendiri, jadi selisih terbesar belum tentu yang paling jelas.</p></div>', { id: 'quiz-answer' });
+    }
+
+    // Yang dibawa
+    levelIntro('Yang dibawa', 'Riset menemukan: yang dibawa masing-masing lebih berpengaruh daripada mirip atau tidaknya kalian.', '🎒');
+    // per sifat, dua orang berdampingan (supaya muat satu layar)
+    R.bawa[0].poin.forEach(function (x0, j) {
+      var d = x0.d;
+      add('<div class="tk2">BEKAL ' + (j + 1) + ' DARI ' + R.bawa[0].poin.length + '</div><h2>' + DEMO[d] + ' ' + GAME[d] + '</h2>' + R.bawa.map(function (b, k) {
+        var x = b.poin[j];
+        return '<div class="card bawa" data-bawa="' + (k + 1) + '.' + d + '.' + x.pita + '" style="border-left:8px solid ' + DUO_COL[k] + '"><div class="tk2">' + esc(b.nama.toUpperCase()) + ' · <span class="pt pt-' + x.pita + '">' + PITA[x.pita] + '</span></div><p>' + esc(x.teks) + '</p>' +
+          (x.bukti ? '<p class="cap">' + tag('bukti') + ' ' + esc(x.bukti) + '</p>' : '') + '</div>';
+      }).join(''), { id: 'bawa-' + d });
+    });
+
+    // Beda & setara
+    levelIntro('Beda & setara', beda.length ? 'Hanya perbedaan yang cukup besar untuk dipercaya. Paling jelas lebih dulu.' : 'Tidak ada perbedaan yang cukup besar untuk dipercaya. Kalian setara di kelima stat.', '⚖️');
+    beda.forEach(function (x, i) {
+      // tanpa judul besar (nama sifat sudah ada di kepala bar) dan bukti di dalam kartu, supaya muat walau nama panjang
+      add('<div class="tk2">BEDA ' + (i + 1) + ' DARI ' + beda.length + '</div>' + duo(x.d, x, true) +
+        '<div class="card"><p>' + esc(x.teks) + '</p>' + (x.bukti ? '<p class="cap">' + tag('bukti') + ' ' + esc(x.bukti) + '</p>' : '') + '</div>' +
+        '<div class="card use"><b>💬 Bahas berdua:</b> ' + esc(x.refleksi) + '</div>', { id: 'beda-' + x.d, cls: (x.teks + (x.bukti || '') + x.refleksi).length > 480 ? 'rapat' : '' });
+    });
+    // yang setara: maksimal 2 sifat per layar
+    for (var si = 0; si < setara.length; si += 2) add('<h2>Yang setara' + (setara.length > 2 ? ' (' + (si / 2 + 1) + '/' + Math.ceil(setara.length / 2) + ')' : '') + '</h2><p class="lead">Selisihnya masih dalam batas kesalahan ukur.</p>' + setara.slice(si, si + 2).map(function (x) {
+      return '<div class="card" data-setara="' + x.d + '"><div class="tk2">' + DEMO[x.d] + ' ' + GAME[x.d].toUpperCase() + ' · ' + x.a.raw + ' dan ' + x.b.raw + '</div><p>' + esc(x.teks) + '</p>' + (x.bukti ? '<p class="cap">' + tag('bukti') + ' ' + esc(x.bukti) + '</p>' : '') + '</div>';
+    }).join(''));
+
+    // Ngobrol berdua
+    levelIntro('Ngobrol berdua', 'Tiga pertanyaan. Jawab bergantian, lalu tulis satu kalimat kesimpulan kalian.', '💬');
+    R.tanya.forEach(function (q, i) {
+      add('<div class="save"><div class="tk2">OBROLAN ' + (i + 1) + ' DARI 3</div><h2>Bahas berdua</h2><label>' + esc(q) + '<textarea data-note="o' + (i + 1) + '" rows="4" placeholder="Kesimpulan kalian…"></textarea></label></div>' +
+        '<p class="cap">' + tag('saran') + ' Dengarkan dulu sampai selesai, baru tanggapi. Tidak ada jawaban yang salah.</p>', { cls: 'savescr' });
+    });
+
+    // Misi duo
+    levelIntro('Misi duo', 'Satu kesepakatan kecil, dicoba 7 hari. Kecil tapi nyata.', '🤝');
+    add('<div class="qh"><span>MISI DUO</span><small>7 hari</small></div><h2>Kesepakatan kecil</h2><div class="save"><label>Satu hal kecil yang mau kalian coba minggu ini (dari obrolan tadi):<textarea data-note="k1" rows="3"></textarea></label></div>' +
+      '<div class="days">' + ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'].map(function (dd, j) { return '<label><input type="checkbox" data-quest="w1d' + (j + 1) + '"><span>' + dd + '</span></label>'; }).join('') + '</div>' +
+      '<p class="cap">' + tag('saran') + ' Centang tiap hari kesepakatannya berjalan. Kalau gagal, ubah kesepakatannya jadi lebih kecil, bukan menyerah.</p>');
+
+    // Penutup
+    LV = 'SELESAI';
+    add('<div class="save"><div class="tk2">💾 SAVE POINT TERAKHIR</div><h2>Tiga pertanyaan</h2><label>Bagian mana yang paling “kena” untuk kalian?<textarea data-note="f1" rows="2"></textarea></label>' +
+      '<label>Bagian mana yang terasa tidak cocok?<textarea data-note="f2" rows="2"></textarea></label><label>Satu hal yang ingin kalian ingat dari buku ini:<textarea data-note="f3" rows="2"></textarea></label></div>', { cls: 'savescr' });
+    add('<h2>Kredit</h2><div class="credits"><p><b>Lima stat:</b> IPIP-BFM-25 Indonesia (Akhtar & Azwar, 2018), bagian Umum.</p>' +
+      '<p><b>Riset:</b> Dyrenforth dkk. (2010), Malouff dkk. (2010), Körner & Altmann (persahabatan), Denissen dkk. (orang tua–remaja).</p>' +
+      '<p><b>Isi:</b> disusun otomatis dengan aturan dari jawaban, tanpa AI.</p></div><div class="card warn"><p>' + esc(R.catatan) + '</p></div>');
+    add('<div class="title end"><div class="tk">TAMAT?</div><div class="tn sm">Belum.</div><div class="tbig">' + OWL + '</div><p class="endp">Level berikutnya: <b>ulangi obrolan ini 2–3 bulan lagi</b>. Lihat apa yang berubah.</p><div class="press">◀ ketuk kiri untuk kembali</div></div>', { cls: 'dark' });
+
+    screens.forEach(function (s) {
+      if (/class="save"|data-quest=|class="title end"/.test(s.body)) s.body += '<button type="button" class="dksave">💾 Simpan & pindahkan catatan</button>';
+    });
+    return { nama: NAMA, judul: 'Panduan Duo', screens: screens, analisa: R, rel: key };
+  }
+  // identitas deck berdua untuk penyimpanan catatan: per pasangan orang dan jenis hubungan
+  // urutan orang tidak berpengaruh: Dina–Ayah dan Ayah–Dina memakai catatan yang sama
+  function idBerdua(code1, code2, rel) { var c = [code1, code2].sort(); return 'DUO|' + rel + '|' + c[0] + '|' + c[1]; }
+
   var OWL = (function () {
     var g = ['..B......B..', '..BB....BB..', '..BBBBBBBB..', '.BBWWBBWWBB.', '.BWKWBBWKWB.', '.BBWWOOWWBB.', '.BBBBOOBBBB.', '.BBLLLLLLBB.', '.BBLLLLLLBB.', '.BBLLLLLLBB.', '..BBBBBBBB..', '...OO..OO...'];
     var col = { B: '#8A5A3B', L: '#F6D9A6', W: '#FFFFFF', K: '#1D1747', O: '#F28C28' }, r = '';
@@ -1527,8 +1815,8 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     return { s: s, nama: o.n };
   }
   // Ringkasan teks catatan & progres, disusun dari isi layar.
-  function notesText(ov, nama, st) {
-    var L = ['Panduan Karakter: ' + nama, ''], qs = [];
+  function notesText(ov, nama, st, judul) {
+    var L = [(judul || 'Panduan Karakter') + ': ' + nama, ''], qs = [];
     Array.prototype.forEach.call(ov.querySelectorAll('.save label'), function (lb) {
       var t = lb.querySelector('textarea'), q = (lb.firstChild && lb.firstChild.nodeType === 3 ? lb.firstChild.nodeValue : lb.textContent).trim();
       qs.push('• ' + q + '\n  ' + (t && t.value.trim() ? t.value.trim().replace(/\n/g, '\n  ') : '(belum diisi)'));
@@ -1550,7 +1838,8 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
   // Pasang deck layar penuh ke dalam dokumen. Mengembalikan {close, show, n}.
   function mount(code, opt) {
     opt = opt || {};
-    var b = build(code, opt), n = b.screens.length, KEY = 'pk-deck-' + hash(code), st = {}, cur = 0, canStore = true;
+    // opt.deck: deck yang sudah disusun (mis. buildBerdua); code tetap dipakai sebagai identitas penyimpanan
+    var b = opt.deck || build(code, opt), n = b.screens.length, KEY = 'pk-deck-' + hash(code), st = {}, cur = 0, canStore = true;
     try { st = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { st = {}; canStore = false; }
     var ov = document.createElement('div'), toastT = null;
     function toast(msg, warn, ms) { var t = ov.querySelector('.dktoast'); t.textContent = msg; t.className = 'dktoast on' + (warn ? ' warn' : ''); clearTimeout(toastT); toastT = setTimeout(function () { t.className = 'dktoast' + (warn ? ' warn' : ''); }, ms || (warn ? 3200 : 1300)); }
@@ -1566,7 +1855,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
       }
       catch (e) { canStore = false; if (user) toast('Browser ini tidak mengizinkan penyimpanan. Pakai 💾 Simpan & pindahkan agar catatan tidak hilang.', true); }
     }
-    ov.id = 'deckov'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-label', 'Panduan Karakter ' + b.nama);
+    ov.id = 'deckov'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-label', (b.judul || 'Panduan Karakter') + ' ' + b.nama);
     ov.innerHTML = '<div class="dkvp"><div class="dkstage"><div class="dkprog"><i class="dkprogf"></i></div>' +
       b.screens.map(function (s, i) { return '<section class="scr ' + s.cls + '"' + (s.id ? ' data-id="' + s.id + '"' : '') + ' data-i="' + i + '"><header class="hd"><span>' + s.lv + '</span><span>' + (i < 9 ? '0' : '') + (i + 1) + '/' + n + '</span></header><div class="bd">' + s.body + '</div></section>'; }).join('') +
       '<button class="dknav dknavL" type="button" aria-label="Kembali"></button><button class="dknav dknavR" type="button" aria-label="Lanjut"></button></div></div>' +
@@ -1656,11 +1945,11 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
       if (act === 'tutup') closePanel();
       if (act === 'wa') {
         // isi pesan dibuat saat diketuk supaya memuat catatan terbaru; aplikasi bisa memberi pesan cadangan lengkap lewat opt.waText
-        var txt = opt.waText ? opt.waText() : notesText(ov, b.nama, st) + '\n\nKode progres (untuk memulihkan catatan ini):\n' + progressCode(code, b.nama, st);
+        var txt = opt.waText ? opt.waText() : notesText(ov, b.nama, st, b.judul) + '\n\nKode progres (untuk memulihkan catatan ini):\n' + progressCode(code, b.nama, st);
         if (txt.length > 6000) { e.preventDefault(); showOut('Pesan terlalu panjang untuk WhatsApp. Salin isinya:', txt, false); copy(txt, 'Cadangan'); return; }
         bt.setAttribute('href', 'https://wa.me/?text=' + encodeURIComponent(txt)); msg('WhatsApp dibuka. Pilih chat dengan diri sendiri, lalu kirim.');
       }
-      if (act === 'teks') { var tx = notesText(ov, b.nama, st); showOut('Isi yang disalin:', tx, false); copy(tx, 'Catatan'); }
+      if (act === 'teks') { var tx = notesText(ov, b.nama, st, b.judul); showOut('Isi yang disalin:', tx, false); copy(tx, 'Catatan'); }
       if (act === 'kode') { var kd = progressCode(code, b.nama, st); showOut('Kode progres ' + b.nama + ':', kd, false); copy(kd, 'Kode progres'); }
       if (act === 'pakai') { showOut('Tempel kode progres (diawali PN1.):', '', true); pmsg.textContent = ''; try { pta.focus(); } catch (e2) { /* abaikan */ } }
       if (act === 'pulihkan') {
@@ -1687,7 +1976,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     return { close: close, show: show, n: n, build: b, openPanel: openPanel };
   }
 
-  return { build: build, mount: mount, CARD: CARD, JURUS: JURUS, SHIFT: SHIFT, hash: hash, progressCode: progressCode, readProgress: readProgress };
+  return { build: build, buildBerdua: buildBerdua, idBerdua: idBerdua, mount: mount, CARD: CARD, JURUS: JURUS, SHIFT: SHIFT, hash: hash, progressCode: progressCode, readProgress: readProgress };
 });
 
 </script>
@@ -2071,7 +2360,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
   function daftarKode() { var a = load(BANDING_KEY); return Array.isArray(a) ? a : []; }
   function people() {
     var own = load(HASIL_KEY), codes = (own && !load(TANPA_SAYA_KEY) ? [own] : []).concat(daftarKode()), out = [];
-    codes.forEach(function (c) { try { out.push({ p: S.profil(S.decode(c)), code: c, me: c === own }); } catch (e) { /* kode rusak dilewati */ } });
+    codes.forEach(function (c) { try { var dk = S.decode(c); out.push({ p: S.profil(dk), ans: dk.bf.u, code: c, me: c === own }); } catch (e) { /* kode rusak dilewati */ } });
     return out;
   }
   // Proses isi kotak kode: kode valid masuk daftar tersimpan dan dihapus dari kotak; yang rusak tetap di kotak.
@@ -2149,10 +2438,29 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     var draw = function () {
       var i = +$('pa').value, j = +$('pb').value;
       if (i === j) { $('pairout').innerHTML = '<p class="small muted">Pilih dua orang yang berbeda.</p>'; return; }
-      var r = AN.pasangan(ps[i].p, ps[j].p, $('prel').value);
-      $('pairout').innerHTML = '<p>' + esc(r.pembuka) + '</p>' + (r.tipe ? '<p class="small muted" style="margin-top:6px">' + esc(r.tipe) + '</p>' : '') +
-        '<div style="margin-top:6px">' + r.items.map(function (x) { return '<div class="pitem"><div class="dimrow"><div class="h"><b>' + x.dim + '</b><span class="pct">p' + x.a + ' dan p' + x.b + '</span></div></div><p>' + esc(x.teks) + '</p></div>'; }).join('') + '</div>' +
-        '<p class="small muted">Perbedaan terbesar di atas. Berdasarkan skor bagian Umum.</p>';
+      var r = AN.berdua(ps[i], ps[j], $('prel').value);
+      var h2 = '<div class="card deckcta duocta"><h2>▶ Mode Presentasi berdua</h2><p>Buku panduan duo ala game: stat berdampingan, yang dibawa masing-masing, perbedaan yang terukur, 3 obrolan, dan misi 7 hari. Paling seru dibuka berdua.</p><div class="row"><button class="btn" type="button" id="duodeck">Buka presentasi berdua</button></div></div>';
+      h2 += '<p>' + esc(r.pembuka) + '</p>';
+      h2 += '<h3 class="psec">Yang dibawa masing-masing</h3><div class="bawa">' + r.bawa.map(function (o) {
+        return '<div class="bw" data-bawa="' + esc(o.nama) + '"><h4>' + esc(o.nama) + '</h4>' + o.poin.map(function (x) {
+          return '<div class="bp" data-dim="' + x.d + '" data-pita="' + x.pita + '"><b>' + esc(x.dim) + '</b><p>' + esc(x.teks) + '</p>' + (x.bukti ? '<p class="bukti">' + esc(x.bukti) + '</p>' : '') + '</div>';
+        }).join('') + '</div>';
+      }).join('') + '</div>';
+      h2 += '<h3 class="psec">Di mana kalian berbeda</h3><div>' + r.items.map(function (x) {
+        return '<div class="pitem" data-dim="' + x.d + '" data-status="' + x.status + '"><div class="dimrow"><div class="h"><b>' + esc(x.dim) + ' <span class="stchip ' + x.status + '">' + esc(x.label) + '</span></b><span class="pct">skor ' + x.a.raw + ' dan ' + x.b.raw + ' (dari 25)</span></div></div>' +
+          '<p>' + esc(x.teks) + '</p>' + (x.bukti ? '<p class="bukti">' + esc(x.bukti) + '</p>' : '') + '<p class="refl">💬 ' + esc(x.refleksi) + '</p></div>';
+      }).join('') + '</div>';
+      h2 += '<h3 class="psec">Tiga pertanyaan untuk dibahas berdua</h3><ol class="tanya">' + r.tanya.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ol>';
+      if (r.tipe) h2 += '<p class="small muted" style="margin-top:10px">' + esc(r.tipe) + '</p>';
+      h2 += '<p class="small muted" style="margin-top:8px">' + esc(r.catatan) + ' Urutan: perbedaan paling jelas di atas. Berdasarkan bagian Umum.</p>';
+      $('pairout').innerHTML = h2;
+      var rel = $('prel').value, A1 = ps[i], B1 = ps[j];
+      $('duodeck').addEventListener('click', function () {
+        if (!window.Deck || !window.Deck.buildBerdua) { alert('Mode presentasi belum termuat. Muat ulang halaman.'); return; }
+        hitung('presentasi-berdua');
+        var bt = this;
+        window.Deck.mount(window.Deck.idBerdua(A1.code, B1.code, rel), { deck: window.Deck.buildBerdua(A1, B1, rel), onClose: function () { try { bt.focus(); } catch (e) { /* abaikan */ } } });
+      });
     };
     ['pa', 'pb', 'prel'].forEach(function (id) { $(id).addEventListener('change', draw); }); draw();
   }
@@ -2256,7 +2564,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     var inFrame = false, canStore = false; try { inFrame = window.self !== window.top; } catch (e) { inFrame = true; }
     try { localStorage.setItem('pk-cek', '1'); localStorage.removeItem('pk-cek'); canStore = true; } catch (e) { /* abaikan */ }
     var se = document.scrollingElement || document.documentElement;
-    $('diag').textContent = 'Status: skrip aktif ✓ · bingkai: ' + (inFrame ? 'ya' : 'tidak') + ' · simpan: ' + (canStore ? 'bisa' : 'tidak') + ' · layar ' + window.innerWidth + '×' + window.innerHeight + ' · gulir: ' + (se.scrollHeight > window.innerHeight + 2 ? 'halaman' : 'wadah luar') + ' · v24';
+    $('diag').textContent = 'Status: skrip aktif ✓ · bingkai: ' + (inFrame ? 'ya' : 'tidak') + ' · simpan: ' + (canStore ? 'bisa' : 'tidak') + ' · layar ' + window.innerWidth + '×' + window.innerHeight + ' · gulir: ' + (se.scrollHeight > window.innerHeight + 2 ? 'halaman' : 'wadah luar') + ' · v25';
   })();
   var saved = load(HASIL_KEY);
   if (saved && !showHasil(saved)) store(HASIL_KEY, null);
