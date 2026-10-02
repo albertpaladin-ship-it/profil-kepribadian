@@ -94,6 +94,20 @@ textarea { font-family: var(--f-mono); font-size: 12.5px; resize: vertical; }
 .tg input:disabled + label { cursor: default; }
 .tg input:focus-visible + label { outline: 3px solid var(--accent); outline-offset: 2px; }
 .tg b { font-weight: 700; } .tg span { font-size: 12.5px; color: var(--muted); }
+.pilih { display: grid; gap: 10px; }
+.pj { position: relative; }
+.pj input { position: absolute; opacity: 0; pointer-events: none; }
+.pj label { display: grid; gap: 3px; border: 1.5px solid var(--line); border-radius: 14px; padding: 14px 14px 14px 46px; cursor: pointer; background: var(--surface); }
+.pj label::before { content: ""; position: absolute; left: 15px; top: 17px; width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--line); background: var(--bg); }
+.pj input:checked + label { border-color: var(--accent); background: var(--accent-soft); }
+.pj input:checked + label::before { background: var(--accent); border-color: var(--accent); box-shadow: inset 0 0 0 4px var(--accent-soft); }
+.pj input:focus-visible + label { outline: 3px solid var(--accent); outline-offset: 2px; }
+.pj b { font-size: 16.5px; font-weight: 700; } .pj span { font-size: 13px; color: var(--muted); }
+.pj .rek { display: inline-block; font-size: 11.5px; font-weight: 700; color: var(--accent-ink); background: var(--accent); border-radius: 99px; padding: 1px 8px; margin-left: 6px; vertical-align: 2px; }
+.pj .nanti { font-style: italic; }
+.lengkapi { border-color: var(--accent); }
+.lengkapi .btn { width: 100%; }
+.lengkapok { border-color: var(--accent); background: var(--accent-soft); }
 .cdot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
 
 /* soal */
@@ -536,7 +550,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     <ul><li><b>iPhone:</b> buka link ini di <b>Safari</b> (salin, lalu tempel di kolom alamat): <a href="https://albertpaladin-ship-it.github.io/profil-kepribadian/">albertpaladin-ship-it.github.io/profil-kepribadian</a></li>
     <li><b>Android:</b> buka link di atas dengan <b>Chrome</b>, atau buka file ini dengan Chrome.</li>
     <li><b>Laptop:</b> buka file ini dengan Chrome, Edge, atau Safari.</li></ul>
-    <p class="small muted">Kode status: TANPA-SKRIP · versi 25. Kirim tangkapan layar ini ke pengirim kalau masih bingung.</p>
+    <p class="small muted">Kode status: TANPA-SKRIP · versi 26. Kirim tangkapan layar ini ke pengirim kalau masih bingung.</p>
   </div>
   <div class="note" id="jserr" role="alert" hidden style="position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom, 0px));z-index:50;box-shadow:var(--shadow)"></div>
   <div class="top">
@@ -583,8 +597,15 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
         <p class="small muted hint" id="namahint">Tidak perlu nama asli. Nama ini hanya muncul di hasil Anda dan di perangkat orang yang Anda kirimi kode.</p>
       </div>
       <div class="card">
+        <span class="lbl">Pilih panjang tes</span>
+        <div class="pilih" role="radiogroup" aria-label="Panjang tes">
+          <div class="pj"><input type="radio" name="panjang" id="pj-lengkap" value="lengkap" autocomplete="off" checked><label for="pj-lengkap"><b>Lengkap · ±<span class="pjm" id="pjm-lengkap">11</span> menit<i class="rek">disarankan</i></b><span>Umum + Kerja/kuliah + Di rumah + Saat tertekan + tipe empat huruf + kekuatan karakter</span></label></div>
+          <div class="pj"><input type="radio" name="panjang" id="pj-cepat" value="cepat" autocomplete="off"><label for="pj-cepat"><b>Cepat · ±<span class="pjm" id="pjm-cepat">5</span> menit</b><span>Umum + tipe empat huruf + kekuatan karakter</span><span class="nanti">Sisanya bisa dilengkapi nanti tanpa mengulang.</span></label></div>
+        </div>
+        <p class="small muted">Bagian Kerja, Rumah, dan Tertekan berisi soal kejadian sehari-hari; bedanya dengan bagian Umum menunjukkan sisi diri yang muncul di situasi itu.</p>
+      </div>
+      <div class="card" id="ceklama" hidden>
         <span class="lbl">Situasi yang ingin dilihat</span>
-        <p class="small muted">Tiap situasi berisi 25 soal bergambar kejadian sehari-hari. Bedanya dengan bagian Umum menunjukkan sisi diri yang muncul di situasi itu.</p>
         <div class="toggle-grid">
           <div class="tg"><input type="checkbox" id="ctx-u" checked disabled><label for="ctx-u"><b><span class="cdot" style="background:var(--c-u)"></span>Umum</b><span>Wajib · 25 soal</span></label></div>
           <div class="tg"><input type="checkbox" id="ctx-k"><label for="ctx-k"><b><span class="cdot" style="background:var(--c-k)"></span>Kerja / kuliah</b><span>25 soal</span></label></div>
@@ -678,7 +699,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     <p>Lima dimensi: IPIP-BFM-25 Indonesia (Akhtar &amp; Azwar, 2018; soal IPIP domain publik). Soal skenario kerja/rumah/tertekan ditulis ulang dan belum divalidasi. Persentil dibanding 19.718 responden internasional (data terbuka Open Psychometrics, c. 2012); di bawah persentil 30 rendah, di atas 70 tinggi. Subsampel Indonesia hanya 172 orang.</p>
     <p>Tipe empat huruf: Open Extended Jungian Type Scales 1.2 (Eric Jorgenson), CC BY-NC-SA 4.0; terjemahan belum divalidasi; bukan MBTI resmi. Gaya kerja adalah perkiraan dari Ekstraversi dan Keramahan, bukan tes DISC. Kekuatan karakter berasal dari survei VIA (VIA Institute on Character).</p>
     <p id="analitik">Halaman ini menghitung jumlah kunjungan dan pemakaian fitur secara <b>anonim</b> dengan GoatCounter: tanpa cookie, tanpa alamat IP, dan tanpa nama, jawaban, atau kode hasil siapa pun.</p>
-    <p>Versi 25 · 2 Oktober 2026 · <a href="https://albertpaladin-ship-it.github.io/profil-kepribadian/">albertpaladin-ship-it.github.io/profil-kepribadian</a></p>
+    <p>Versi 26 · 2 Oktober 2026 · <a href="https://albertpaladin-ship-it.github.io/profil-kepribadian/">albertpaladin-ship-it.github.io/profil-kepribadian</a></p>
     <p id="diag" class="diag">Status: skrip belum berjalan.</p>
     <p>Analisa berdua berpegang pada Dyrenforth dkk. (2010), Malouff dkk. (2010), Körner &amp; Altmann (persahabatan), dan Denissen dkk. (orang tua–remaja). Batas "jelas/mungkin berbeda" dihitung dari perkiraan keandalan kuesioner. Untuk penggunaan pribadi dan non-komersial. Semua dihitung di perangkat Anda.</p>
   </footer>
@@ -686,7 +707,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
 
 <script>
 (function () {
-  function tampil(msg) { var b = document.getElementById('jserr'); if (!b) return; b.hidden = false; b.textContent = 'Terjadi galat: ' + msg + ' Tolong kirim tangkapan layar ini. (versi 25)'; }
+  function tampil(msg) { var b = document.getElementById('jserr'); if (!b) return; b.hidden = false; b.textContent = 'Terjadi galat: ' + msg + ' Tolong kirim tangkapan layar ini. (versi 26)'; }
   window.addEventListener('error', function (e) { tampil((e && e.message ? e.message : 'tidak diketahui') + (e && e.lineno ? ' [baris ' + e.lineno + ']' : '') + '.'); });
   window.addEventListener('unhandledrejection', function (e) { tampil(String(e && e.reason) + '.'); });
 })();
@@ -2084,7 +2105,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
   function buildQueue(s) {
     var q = [];
     CTX.forEach(function (c) {
-      if (c !== 'u' && s.ctx.indexOf(c) < 0) return;
+      if (c === 'u' ? s.base : s.ctx.indexOf(c) < 0) return;
       q.push({ t: 'intro', ctx: c });
       S.displayOrder(c).forEach(function (i, pos) { q.push({ t: 'bf', ctx: c, i: i, n: pos + 1, gid: 'bf-' + c + '-' + i }); });
     });
@@ -2096,11 +2117,23 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
   function answerable() { return queue.filter(function (x) { return x.gid; }); }
   function answeredCount() { return answerable().filter(function (x) { return st.ans[x.gid]; }).length; }
   function saveDraft() { store(DRAFT_KEY, st); }
+  function menitSoal(n) { return Math.max(3, Math.round(n * 5 / 60)); }
   function estimasi() {
-    var n = 25 * (1 + ['k', 'r', 't'].filter(function (c) { return $('ctx-' + c).checked; }).length) + ($('use-oj').checked ? 32 : 0);
-    $('estimasi').textContent = '± ' + Math.max(3, Math.round(n * 5 / 60)) + ' menit · ' + n + ' soal';
+    var ctxOn = ['k', 'r', 't'].filter(function (c) { return $('ctx-' + c).checked; }).length, oj = $('use-oj').checked, via = $('use-via').checked;
+    var n = 25 * (1 + ctxOn) + (oj ? 32 : 0);
+    $('estimasi').textContent = '± ' + menitSoal(n) + ' menit · ' + n + ' soal';
+    // dua pilihan mengikuti isi checkbox (tersembunyi); kombinasi lain = tidak ada yang terpilih
+    $('pj-lengkap').checked = ctxOn === 3 && oj && via; $('pj-cepat').checked = ctxOn === 0 && oj && via;
+    $('pjm-lengkap').textContent = menitSoal(25 * 4 + 32); $('pjm-cepat').textContent = menitSoal(25 + 32);
   }
   ['ctx-k', 'ctx-r', 'ctx-t', 'use-oj', 'use-via'].forEach(function (id) { $(id).addEventListener('change', estimasi); });
+  // Lengkap (bawaan) = Umum + Kerja + Rumah + Tertekan + tipe + kekuatan; Cepat = Umum + tipe + kekuatan
+  var PILIH_KEY = 'pk-pilihan';
+  function terapkanPilihan(v) {
+    var lengkap = v !== 'cepat';
+    ['ctx-k', 'ctx-r', 'ctx-t'].forEach(function (id) { $(id).checked = lengkap; }); $('use-oj').checked = true; $('use-via').checked = true; estimasi();
+  }
+  ['pj-lengkap', 'pj-cepat'].forEach(function (id) { $(id).addEventListener('change', function () { if (!$(id).checked) return; store(PILIH_KEY, $(id).value); terapkanPilihan($(id).value); }); });
 
   // hitungan anonim: hanya NAMA kejadian (mis. "tes-selesai"), tidak pernah nama orang, jawaban, atau kode
   function hitung(ev) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: ev, title: ev, event: true }); } catch (e) { /* abaikan */ } }
@@ -2111,11 +2144,16 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
   }
   function openRunner() { $('setup').hidden = true; $('runner').hidden = false; render(); toTop($('runner')); }
   function closeRunner() { $('runner').hidden = true; $('setup').hidden = false; refreshResume(); toTop(); }
+  function draftValid() {
+    var d = load(DRAFT_KEY); if (!d) return null;
+    if (d.base && d.base !== load(HASIL_KEY)) { store(DRAFT_KEY, null); return null; } // hasil yang mau dilengkapi sudah diganti/dihapus
+    return d;
+  }
   function refreshResume() {
-    var d = load(DRAFT_KEY);
+    var d = draftValid();
     if (d && d.ans && Object.keys(d.ans).length && Array.isArray(d.ctx)) {
       var q = buildQueue(d), total = q.filter(function (x) { return x.gid; }).length, done = q.filter(function (x) { return x.gid && d.ans[x.gid]; }).length;
-      $('resumecard').hidden = false; $('resumetxt').textContent = (d.nama ? d.nama + ': ' : '') + done + ' dari ' + total + ' soal sudah dijawab.';
+      $('resumecard').hidden = false; $('resumetxt').textContent = (d.base ? 'Melengkapi hasil' + (d.nama ? ' ' + d.nama : '') + ': ' : d.nama ? d.nama + ': ' : '') + done + ' dari ' + total + ' soal sudah dijawab.';
     } else $('resumecard').hidden = true;
   }
 
@@ -2192,6 +2230,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
   function finish() {
     var missing = answerable().filter(function (x) { return !st.ans[x.gid]; });
     if (missing.length) { st.pos = queue.indexOf(missing[0]); render(); return; }
+    if (st.base) { selesaiLengkapi(); return; }
     var bf = {};
     CTX.forEach(function (c) { if (c === 'u' || st.ctx.indexOf(c) >= 0) bf[c] = S.BF_ITEMS.map(function (_, i) { return st.ans['bf-' + c + '-' + i]; }); });
     var oj = st.oj ? S.OJ_ITEMS.map(function (_, i) { return st.ans['oj-' + i]; }) : null;
@@ -2199,6 +2238,56 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     store(HASIL_KEY, code); store(DRAFT_KEY, null); store(TANPA_SAYA_KEY, null); hitung('tes-selesai');
     $('runner').hidden = true; $('setup').hidden = false; refreshResume();
     showHasil(code); renderKel(); show('hasil');
+  }
+
+  // ---------------- lengkapi hasil: hanya bagian yang belum ada; jawaban lama tidak ditanya ulang dan tidak berubah
+  function bagianKurang(code) {
+    var d; try { d = S.decode(code); } catch (e) { return null; }
+    return { ctx: ['k', 'r', 't'].filter(function (c) { return !d.bf[c]; }), oj: !d.oj, via: !d.via.length };
+  }
+  function adaKurang(k) { return !!(k && (k.ctx.length || k.oj || k.via)); }
+  function menitKurang(k) { return Math.max(1, Math.round((25 * k.ctx.length + (k.oj ? 32 : 0)) * 5 / 60)); }
+  function namaKurang(k) { return k.ctx.map(function (c) { return S.CONTEXTS[c].nama; }).concat(k.oj ? ['tipe empat huruf'] : [], k.via ? ['kekuatan karakter'] : []).join(', '); }
+  function namaAsli(code) { try { return JSON.parse(b64d(code.slice(4))).n || ''; } catch (e) { return ''; } } // decode() mengganti nama kosong dengan "Tanpa nama"
+  function mulaiLengkapi() {
+    var code = load(HASIL_KEY), k = bagianKurang(code); if (!adaKurang(k)) return;
+    st = { nama: namaAsli(code), base: code, ctx: k.ctx, oj: k.oj, via: k.via, ans: {}, viaSel: [], pos: 0 };
+    queue = buildQueue(st); saveDraft(); show('tes'); openRunner();
+  }
+  // Pindahkan catatan presentasi (sendiri & berdua) dari kode lama ke kode baru; catatan yang sudah ada di tujuan tidak ditimpa.
+  function pindahCatatan(lama, baru) {
+    var D = window.Deck, n = 0; if (!D || lama === baru) return 0;
+    var pindah = function (a, b) {
+      try {
+        var ka = 'pk-deck-' + D.hash(a), kb = 'pk-deck-' + D.hash(b), v = localStorage.getItem(ka);
+        if (v == null || ka === kb || localStorage.getItem(kb) != null) return;
+        localStorage.setItem(kb, v); localStorage.removeItem(ka); n++;
+      } catch (e) { /* penyimpanan opsional */ }
+    };
+    pindah(lama, baru);
+    daftarKode().forEach(function (c) { ['pasangan', 'keluarga', 'teman'].forEach(function (rel) { pindah(D.idBerdua(lama, c, rel), D.idBerdua(baru, c, rel)); }); });
+    return n;
+  }
+  function selesaiLengkapi() {
+    var lama = S.decode(st.base), bf = {};
+    CTX.forEach(function (c) {
+      if (lama.bf[c]) bf[c] = lama.bf[c];
+      else if (st.ctx.indexOf(c) >= 0) bf[c] = S.BF_ITEMS.map(function (_, i) { return st.ans['bf-' + c + '-' + i]; });
+    });
+    var oj = lama.oj || (st.oj ? S.OJ_ITEMS.map(function (_, i) { return st.ans['oj-' + i]; }) : null);
+    var via = lama.via.length ? lama.via : (st.via ? st.viaSel.slice(0, 5) : []);
+    var code = S.encode({ nama: namaAsli(st.base), tgl: lama.tgl, bf: bf, oj: oj, via: via }), sama = code === st.base;
+    var nPindah = pindahCatatan(st.base, code);
+    store(HASIL_KEY, code); store(DRAFT_KEY, null);
+    if (!sama) hitung('tes-dilengkapi');
+    $('runner').hidden = true; $('setup').hidden = false; refreshResume();
+    showHasil(code); renderKel(); show('hasil');
+    $('hasil').insertAdjacentHTML('afterbegin', sama
+      ? '<div class="card lengkapok" id="lengkapok" role="status"><h3>Hasil tidak berubah</h3><p class="small">Tidak ada bagian baru yang diisi, jadi kode hasil Anda tetap sama.</p></div>'
+      : '<div class="card lengkapok" id="lengkapok" role="status"><h3>✓ Hasil sudah dilengkapi</h3><p class="small">Bagian baru sudah digabung ke hasil Anda. Jawaban lama dan tanggal tes tidak berubah' + (nPindah ? ', dan catatan presentasi ikut dipindahkan' : '') + '.</p>' +
+        '<p class="small"><b>Kirim ulang kode baru Anda ke teman</b> supaya mereka melihat versi lengkapnya. Data hanya tersimpan di HP masing-masing, jadi kode lama di HP mereka tidak ikut berubah.</p>' +
+        '<div class="row"><button class="btn" type="button" id="kekode">Salin kode baru</button></div></div>');
+    $('kekode') && $('kekode').addEventListener('click', function () { var cb = $('codebox'); if (cb) cb.scrollIntoView(true); if ($('copy')) $('copy').click(); });
   }
 
   // ---------------- radar
@@ -2234,6 +2323,8 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     h += '<div class="rhero"><span class="who">' + esc(pr.nama || (other ? 'Tanpa nama' : 'Profil saya')) + '</span>' + '<span class="herotgl">' + infoTgl(pr, other ? code : null) + '</span>' +
       (pr.oj ? '<div class="type">' + pr.oj.type + '</div><p class="tag">Cenderung ' + esc(S.TYPE_DESC[pr.oj.type]) + '.</p>' : '<div class="type" style="font-size:clamp(30px,8vw,40px)">Profil Anda</div>') +
       '<div class="pills">' + (pr.gaya ? '<span>Gaya kerja: ' + pr.gaya.nama + '</span>' : '') + pr.via.slice(0, 3).map(function (v) { return '<span>' + esc(viaName(v)) + '</span>'; }).join('') + '</div></div>';
+    var kurang = code && !other ? bagianKurang(code) : null;
+    if (adaKurang(kurang)) h += '<div class="card lengkapi" id="lengkapicard"><p class="small muted">Hasil ini belum memuat: ' + esc(namaKurang(kurang)) + '.</p><button class="btn" type="button" id="lengkapibtn">➕ Lengkapi bagian yang belum diisi (±' + menitKurang(kurang) + ' menit)</button><p class="small muted">Jawaban yang sudah ada tidak ditanya ulang dan tidak berubah.</p></div>';
     var series = [{ vals: {}, color: 'var(--accent)', fill: true, name: 'Umum' }];
     DIMS.forEach(function (d) { series[0].vals[d] = u[d].persentil; });
     ctxs.filter(function (c) { return c !== 'u'; }).forEach(function (c) { var se = { vals: {}, color: 'var(--c-' + c + ')', dash: true, name: S.CONTEXTS[c].nama }; DIMS.forEach(function (d) { se.vals[d] = pr.bf[c][d].persentil; }); series.push(se); });
@@ -2315,6 +2406,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
       Array.prototype.forEach.call(box.querySelectorAll('[data-panel]'), function (p) { p.hidden = p.getAttribute('data-panel') !== b.getAttribute('data-a'); });
     });
     if (box.id !== 'hasil') return;
+    if ($('lengkapibtn')) $('lengkapibtn').addEventListener('click', mulaiLengkapi);
     var cinfo = $('cadinfo');
     $('cadwa').addEventListener('click', function (e) {
       var txt = pesanCadangan();
@@ -2350,7 +2442,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     if (rs) rs.addEventListener('click', function () {
       if (!armed) { armed = true; rs.textContent = 'Tekan sekali lagi untuk menghapus'; $('resetinfo').textContent = 'Jawaban dan hasil di perangkat ini akan dihapus.'; clearTimeout(timer); timer = setTimeout(function () { armed = false; rs.innerHTML = 'Hapus hasil &amp; mulai dari awal'; $('resetinfo').textContent = ''; }, 6000); return; }
       clearTimeout(timer); store(HASIL_KEY, null); store(DRAFT_KEY, null); store(TANPA_SAYA_KEY, null);
-      $('hasil').innerHTML = ''; $('hasilkosong').hidden = false; $('nama').value = ''; ['ctx-k', 'ctx-r', 'ctx-t'].forEach(function (id) { $(id).checked = false; }); $('use-oj').checked = true; $('use-via').checked = true; estimasi();
+      $('hasil').innerHTML = ''; $('hasilkosong').hidden = false; $('nama').value = ''; store(PILIH_KEY, null); terapkanPilihan('lengkap');
       refreshResume(); renderKel(); show('tes');
     });
   }
@@ -2526,7 +2618,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
   $('mulai').addEventListener('click', startFresh);
   $('baru').addEventListener('click', function () { store(DRAFT_KEY, null); refreshResume(); });
   $('lanjut').addEventListener('click', function () {
-    var d = load(DRAFT_KEY); if (!d) { refreshResume(); return; }
+    var d = draftValid(); if (!d) { refreshResume(); return; }
     st = d; queue = buildQueue(st); if (!(st.pos >= 0 && st.pos < queue.length)) st.pos = 0;
     $('nama').value = st.nama || ''; openRunner();
   });
@@ -2546,7 +2638,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
   $('filesaya').addEventListener('change', function () { bacaFile($('filesaya'), function (t) { prosesMuat(t || '(file kosong)'); }); });
 
   // ---------------- mulai
-  estimasi(); refreshResume(); initTgl();
+  terapkanPilihan(load(PILIH_KEY)); refreshResume(); initTgl();
   $('jsfail').hidden = true;
   // kartu "Sebelum mulai": terbuka di kunjungan pertama, diciutkan setelah "Mengerti"
   (function () {
@@ -2564,7 +2656,7 @@ html:not(.js) .app > :not(#jsfail) { display: none !important; }
     var inFrame = false, canStore = false; try { inFrame = window.self !== window.top; } catch (e) { inFrame = true; }
     try { localStorage.setItem('pk-cek', '1'); localStorage.removeItem('pk-cek'); canStore = true; } catch (e) { /* abaikan */ }
     var se = document.scrollingElement || document.documentElement;
-    $('diag').textContent = 'Status: skrip aktif ✓ · bingkai: ' + (inFrame ? 'ya' : 'tidak') + ' · simpan: ' + (canStore ? 'bisa' : 'tidak') + ' · layar ' + window.innerWidth + '×' + window.innerHeight + ' · gulir: ' + (se.scrollHeight > window.innerHeight + 2 ? 'halaman' : 'wadah luar') + ' · v25';
+    $('diag').textContent = 'Status: skrip aktif ✓ · bingkai: ' + (inFrame ? 'ya' : 'tidak') + ' · simpan: ' + (canStore ? 'bisa' : 'tidak') + ' · layar ' + window.innerWidth + '×' + window.innerHeight + ' · gulir: ' + (se.scrollHeight > window.innerHeight + 2 ? 'halaman' : 'wadah luar') + ' · v26';
   })();
   var saved = load(HASIL_KEY);
   if (saved && !showHasil(saved)) store(HASIL_KEY, null);
